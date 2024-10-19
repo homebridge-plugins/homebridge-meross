@@ -86,7 +86,7 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 ⚠️ Some things of note:
 
 - The recent updates to the plugin are in response to upcoming changes to the Meross API
-  - You may have received an email from Meross about this ([#556](https://github.com/bwp91/homebridge-meross/issues/556))
+  - You may have received an email from Meross about this ([#556](https://github.com/homebridge-plugins/homebridge-meross/issues/556))
 - The plugin will now store your Meross access token (when using cloud/hybrid connection) in the Homebridge storage directory:
   - This allows the plugin to persist your access token between Homebridge restarts
   - The plugin no longer needs to create a login session every time Homebridge starts
@@ -569,7 +569,7 @@ Thanks to @ggfunnn, @Rowbby and @DeadlyVirez for help with implementing some of 
 
 ### Changed
 
-- Updated HomeKit native ignore list ([PR #390](https://github.com/bwp91/homebridge-meross/pull/390))
+- Updated HomeKit native ignore list ([PR #390](https://github.com/homebridge-plugins/homebridge-meross/pull/390))
 - Plugin will log HAPNodeJS version on startup
 - Bump `mqtt` to v4.3.2
 - Bump `homebridge` recommended version to v1.3.9

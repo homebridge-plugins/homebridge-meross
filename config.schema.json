@@ -4,7 +4,7 @@
   "singular": true,
   "customUi": true,
   "customUiPath": "./lib/homebridge-ui",
-  "headerDisplay": "<p align=\"center\"><img width=\"60%\" src=\"https://user-images.githubusercontent.com/43026681/127397024-8b15fc07-f31b-44bd-89e3-51d738d2609a.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/bwp91/homebridge-meross/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
+  "headerDisplay": "<p align=\"center\"><img width=\"60%\" src=\"https://user-images.githubusercontent.com/43026681/127397024-8b15fc07-f31b-44bd-89e3-51d738d2609a.png\"></p><p align=\"center\">For help and support please visit our <a href=\"https://github.com/homebridge-plugins/homebridge-meross/wiki\">GitHub Wiki</a>. We hope you find this plugin useful!</p>",
   "schema": {
     "name": {
       "type": "string",
@@ -40,7 +40,7 @@
     "userkey": {
       "title": "Meross Key",
       "type": "string",
-      "description": "Enter your Meross key to enable local devices. You don't need to enter this if you have entered your username and password above, even for local devices. For help with obtaining this value see <a href=\"https://github.com/bwp91/homebridge-meross/wiki/Local-Control\" target=\"_blank\">the wiki</a>.",
+      "description": "Enter your Meross key to enable local devices. You don't need to enter this if you have entered your username and password above, even for local devices. For help with obtaining this value see <a href=\"https://github.com/homebridge-plugins/homebridge-meross/wiki/Local-Control\" target=\"_blank\">the wiki</a>.",
       "minLength": 32,
       "maxLength": 32,
       "condition": {

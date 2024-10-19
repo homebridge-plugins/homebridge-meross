@@ -27,13 +27,13 @@
       "url": "https://www.paypal.me/BenPotter"
     }
   ],
-  "homepage": "https://github.com/bwp91/homebridge-meross",
+  "homepage": "https://github.com/homebridge-plugins/homebridge-meross",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bwp91/homebridge-meross.git"
+    "url": "https://github.com/homebridge-plugins/homebridge-meross.git"
   },
   "bugs": {
-    "url": "https://github.com/bwp91/homebridge-meross/issues"
+    "url": "https://github.com/homebridge-plugins/homebridge-meross/issues"
   },
   "keywords": [
     "homebridge",
@@ -49,7 +49,7 @@
   "main": "lib/index.js",
   "engines": {
     "homebridge": "^1.6.0 || ^2.0.0-beta.0",
-    "node": "^18.20.4 || ^20.18.0 || ^22.9.0"
+    "node": "^18.20.4 || ^20.18.0 || ^22.10.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
@@ -61,10 +61,10 @@
     "mqtt": "^5.10.1",
     "node-persist": "^4.0.3",
     "p-queue": "^8.0.1",
-    "p-timeout": "^6.1.2"
+    "p-timeout": "^6.1.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.7.3",
-    "eslint": "^9.12.0"
+    "@antfu/eslint-config": "^3.8.0",
+    "eslint": "^9.13.0"
   }
 }

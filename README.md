@@ -1,5 +1,5 @@
 <p align="center">
- <a href="https://github.com/bwp91/homebridge-meross"><img alt="Homebridge Verified" src="https://user-images.githubusercontent.com/43026681/127397024-8b15fc07-f31b-44bd-89e3-51d738d2609a.png" width="600px"></a>
+ <a href="https://github.com/homebridge-plugins/homebridge-meross"><img alt="Homebridge Verified" src="https://user-images.githubusercontent.com/43026681/127397024-8b15fc07-f31b-44bd-89e3-51d738d2609a.png" width="600px"></a>
 </p>
 <span align="center">
 
@@ -8,7 +8,7 @@
 Homebridge plugin to integrate Meross devices into HomeKit
 
 [![npm](https://img.shields.io/npm/v/homebridge-meross/latest?label=latest)](https://www.npmjs.com/package/homebridge-meross)
-[![npm](https://img.shields.io/npm/v/homebridge-meross/beta?label=beta)](https://github.com/bwp91/homebridge-meross/wiki/Beta-Version)
+[![npm](https://img.shields.io/npm/v/homebridge-meross/beta?label=beta)](https://github.com/homebridge-plugins/homebridge-meross/wiki/Beta-Version)
 
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![hoobs-certified](https://badgen.net/badge/HOOBS/certified/yellow?label=hoobs)](https://plugins.hoobs.org/plugin/homebridge-meross)
@@ -35,22 +35,22 @@ Homebridge plugin to integrate Meross devices into HomeKit
 
 ### Setup
 
-- [Installation](https://github.com/bwp91/homebridge-meross/wiki/Installation)
-- [Configuration](https://github.com/bwp91/homebridge-meross/wiki/Configuration)
+- [Installation](https://github.com/homebridge-plugins/homebridge-meross/wiki/Installation)
+- [Configuration](https://github.com/homebridge-plugins/homebridge-meross/wiki/Configuration)
 - [Beta Version](https://github.com/homebridge/homebridge/wiki/How-to-Install-Alternate-Plugin-Versions)
-- [Node Version](https://github.com/bwp91/homebridge-meross/wiki/Node-Version)
+- [Node Version](https://github.com/homebridge-plugins/homebridge-meross/wiki/Node-Version)
 
 ### Features
 
-- [Supported Devices](https://github.com/bwp91/homebridge-meross/wiki/Supported-Devices)
-- [Cloud Control](https://github.com/bwp91/homebridge-meross/wiki/Cloud-Control)
-- [Local Control](https://github.com/bwp91/homebridge-meross/wiki/Local-Control)
+- [Supported Devices](https://github.com/homebridge-plugins/homebridge-meross/wiki/Supported-Devices)
+- [Cloud Control](https://github.com/homebridge-plugins/homebridge-meross/wiki/Cloud-Control)
+- [Local Control](https://github.com/homebridge-plugins/homebridge-meross/wiki/Local-Control)
 
 ### Help/About
 
-- [Common Errors](https://github.com/bwp91/homebridge-meross/wiki/Common-Errors)
-- [Support Request](https://github.com/bwp91/homebridge-meross/issues/new/choose)
-- [Changelog](https://github.com/bwp91/homebridge-meross/blob/latest/CHANGELOG.md)
+- [Common Errors](https://github.com/homebridge-plugins/homebridge-meross/wiki/Common-Errors)
+- [Support Request](https://github.com/homebridge-plugins/homebridge-meross/issues/new/choose)
+- [Changelog](https://github.com/homebridge-plugins/homebridge-meross/blob/latest/CHANGELOG.md)
 - [About Me](https://github.com/sponsors/bwp91)
 
 ### Credits
