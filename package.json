@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-meross",
+  "name": "@homebridge-plugins/homebridge-meross",
   "alias": "Meross",
   "type": "module",
   "version": "10.8.0",
