@@ -199,6 +199,7 @@
         const introContinue = document.getElementById('introContinue')
         introContinue.addEventListener('click', () => {
           homebridge.showSpinner()
+          homebridge.disableSaveButton?.()
           document.getElementById('pageIntro').style.display = 'none'
           document.getElementById('menuWrapper').style.display = 'inline-flex'
           showSettings()
@@ -208,6 +209,7 @@
       }
       showDevices = async () => {
         homebridge.showSpinner()
+        homebridge.disableSaveButton?.()
         homebridge.hideSchemaForm()
         document.getElementById('menuHome').classList.remove('btn-elegant')
         document.getElementById('menuHome').classList.add('btn-primary')
@@ -272,6 +274,7 @@
       }
       showSupport = () => {
         homebridge.showSpinner()
+        homebridge.disableSaveButton?.()
         homebridge.hideSchemaForm()
         document.getElementById('menuHome').classList.add('btn-elegant')
         document.getElementById('menuHome').classList.remove('btn-primary')
@@ -285,6 +288,7 @@
       }
       showSettings = () => {
         homebridge.showSpinner()
+        homebridge.enableSaveButton?.()
         document.getElementById('menuHome').classList.remove('btn-elegant')
         document.getElementById('menuHome').classList.add('btn-primary')
         document.getElementById('menuDevices').classList.remove('btn-elegant')
