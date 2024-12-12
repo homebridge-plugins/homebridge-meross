@@ -8,6 +8,17 @@ This project tries to adhere to [Semantic Versioning](http://semver.org/). In pr
 - `MINOR` version when a new device type is added, or when a new feature is added that is backwards-compatible
 - `PATCH` version when backwards-compatible bug fixes are implemented
 
+## v10.8.1 (2024-12-12)
+
+### Changed
+
+- Bump `node` recommended versions to `v18.20.5` or `v20.18.1` or `v22.12.0`
+- Dependency updates
+
+### Fixed
+
+- Issue with `MSG100` on node 22: `Missing expected CR after response line`
+
 ## v10.8.0 (2024-10-13)
 
 ### Added
