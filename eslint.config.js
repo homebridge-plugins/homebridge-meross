@@ -32,6 +32,7 @@ export default antfu(
           ],
           order: 'asc',
           type: 'natural',
+          newlinesBetween: 'always',
         },
       ],
       'perfectionist/sort-named-exports': 'error',
