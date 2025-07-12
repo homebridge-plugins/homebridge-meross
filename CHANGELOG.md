@@ -4,6 +4,10 @@ All notable changes to homebridge-meross will be documented in this file.
 
 ## v10.9.1 (Unreleased)
 
+### Notable Changes
+
+- fix custom plugin config modal styles in ui 5
+
 ### Other Changes
 
 - fix plugin name in release workflow
