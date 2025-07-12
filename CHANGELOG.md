@@ -2,11 +2,13 @@
 
 All notable changes to homebridge-meross will be documented in this file.
 
-This project tries to adhere to [Semantic Versioning](http://semver.org/). In practice, this means that the version number will be incremented based on the following:
+## v10.9.0 (Unreleased)
 
-- `MAJOR` version when a minimum supported version of `homebridge` or `node` is increased to a new major version, or when a breaking change is made to the plugin config
-- `MINOR` version when a new device type is added, or when a new feature is added that is backwards-compatible
-- `PATCH` version when backwards-compatible bug fixes are implemented
+⚠️ This plugin no longer officially supports Node `v16` and `v18`, however there is no reason why it shouldn't work on these versions.
+
+### Other Changes
+
+- github repo maintenance
 
 ## v10.8.4 (2025-04-19)
 

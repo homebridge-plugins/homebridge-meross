@@ -49,21 +49,21 @@
   "main": "lib/index.js",
   "engines": {
     "homebridge": "^1.6.0 || ^2.0.0-beta.0",
-    "node": "^18.20.8 || ^20.19.0 || ^22.14.0"
+    "node": "^20 || ^22 || ^24"
   },
   "scripts": {
-    "lint": "eslint . --fix",
-    "rebuild": "rm -rf package-lock.json && rm -rf node_modules && npm install"
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^2.0.2",
-    "axios": "^1.8.4",
-    "mqtt": "^5.11.0",
+    "@homebridge/plugin-ui-utils": "^2.1.0",
+    "axios": "^1.10.0",
+    "mqtt": "^5.13.2",
     "node-persist": "^4.0.4",
     "p-queue": "^8.1.0",
     "p-timeout": "^6.1.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.12.0"
+    "@antfu/eslint-config": "^4.16.2"
   }
 }
