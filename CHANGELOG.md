@@ -2,7 +2,7 @@
 
 All notable changes to homebridge-meross will be documented in this file.
 
-## v10.9.0 (Unreleased)
+## v10.9.0 (2025-07-12)
 
 ⚠️ This plugin no longer officially supports Node `v16` and `v18`, however there is no reason why it shouldn't work on these versions.
 
