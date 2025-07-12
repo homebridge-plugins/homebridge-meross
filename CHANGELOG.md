@@ -7,6 +7,7 @@ All notable changes to homebridge-meross will be documented in this file.
 ### Other Changes
 
 - fix plugin name in release workflow
+- add permissions to workflows
 
 ## v10.9.0 (2025-07-12)
 
