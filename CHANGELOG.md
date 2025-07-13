@@ -8,6 +8,7 @@ All notable changes to homebridge-meross will be documented in this file.
 
 - fix custom plugin config modal styles in ui 5
 - fix eve characteristics for hb 2
+- fix custom characteristics for hb 2
 
 ### Other Changes
 
