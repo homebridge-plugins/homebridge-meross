@@ -2,6 +2,12 @@
 
 All notable changes to homebridge-meross will be documented in this file.
 
+## v10.10.1 (Unreleased)
+
+### Other Changes
+
+- add maintainer message
+
 ## v10.10.0 (2025-07-13)
 
 ### Notable Changes

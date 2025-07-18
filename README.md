@@ -27,6 +27,8 @@ Homebridge plugin to integrate Meross devices into HomeKit
   - supports configuring devices for local-only control without your Meross credentials
   - can ignore any HomeKit-native devices you have using the configuration
 
+> I'm looking for some lovely people to help maintain this plugin, please get in touch on GitHub or Discord if you'd like to help out 😄
+
 ### Prerequisites
 
 - To use this plugin, you will need to already have:
