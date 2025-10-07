@@ -61,7 +61,7 @@
     "mqtt": "^5.13.3",
     "node-persist": "^4.0.4",
     "p-queue": "^8.1.0",
-    "p-timeout": "^6.1.4"
+    "p-timeout": "^7.0.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.19.0"
