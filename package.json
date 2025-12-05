@@ -56,14 +56,14 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^2.1.0",
-    "axios": "^1.11.0",
-    "mqtt": "^5.13.3",
+    "@homebridge/plugin-ui-utils": "^2.1.2",
+    "axios": "^1.13.2",
+    "mqtt": "^5.14.1",
     "node-persist": "^4.0.4",
-    "p-queue": "^8.1.0",
-    "p-timeout": "^6.1.4"
+    "p-queue": "^9.0.1",
+    "p-timeout": "^7.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.19.0"
+    "@antfu/eslint-config": "^6.4.2"
   }
 }
