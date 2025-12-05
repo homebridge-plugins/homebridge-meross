@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changes
 
 - update readme badges (use `shields.io`)
+- update workflows and npm publish via oidc
 
 ## v10.10.2 (2025-07-24)
 
