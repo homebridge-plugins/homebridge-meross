@@ -114,6 +114,12 @@
       "placeholder": 5,
       "minimum": 0
     },
+    "ignoredDevices": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "singleDevices": {
       "type": "array",
       "title": "Single-Channel Devices",

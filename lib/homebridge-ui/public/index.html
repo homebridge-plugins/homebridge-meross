@@ -114,6 +114,17 @@
           <th scope="row">Firmware Version</th>
           <td id="firmware"></td>
         </tr>
+        <tr>
+          <th scope="row">Hide from HomeKit</th>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="hideDevice">
+              <label class="custom-control-label" for="hideDevice">
+                Hide this device from HomeKit
+              </label>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -294,6 +305,54 @@
           document.getElementById('mac_address').innerHTML = context.macAddress || 'N/A'
           document.getElementById('hardware').innerHTML = context.hardware || 'N/A'
           document.getElementById('firmware').innerHTML = context.firmware || 'N/A'
+
+          // Handle hide device checkbox
+          const hideCheckbox = document.getElementById('hideDevice')
+          const deviceUUID = context.serialNumber.toLowerCase().replace(/[^a-z0-9]/g, '')
+
+          // Check if device is currently hidden
+          const config = await homebridge.getPluginConfig()
+          const isHidden = config[0]?.ignoredDevices?.includes(deviceUUID) || false
+          hideCheckbox.checked = isHidden
+
+          // Remove previous event listeners by cloning the element
+          const newCheckbox = hideCheckbox.cloneNode(true)
+          hideCheckbox.parentNode.replaceChild(newCheckbox, hideCheckbox)
+
+          // Add event listener for checkbox changes
+          newCheckbox.addEventListener('change', async (e) => {
+            try {
+              homebridge.showSpinner()
+              const config = await homebridge.getPluginConfig()
+
+              if (!config[0].ignoredDevices) {
+                config[0].ignoredDevices = []
+              }
+
+              if (e.target.checked) {
+                // Add device to ignored list
+                if (!config[0].ignoredDevices.includes(deviceUUID)) {
+                  config[0].ignoredDevices.push(deviceUUID)
+                  homebridge.toast.success(`${thisAcc.displayName} will be hidden from HomeKit after restart`, 'Device Hidden')
+                }
+              } else {
+                // Remove device from ignored list
+                config[0].ignoredDevices = config[0].ignoredDevices.filter(id => id !== deviceUUID)
+                homebridge.toast.success(`${thisAcc.displayName} will be shown in HomeKit after restart`, 'Device Unhidden')
+              }
+
+              await homebridge.updatePluginConfig(config)
+
+              // Switch to Settings tab to sync the form with updated config
+              showSettings()
+              homebridge.toast.info('Please click Save to persist your changes', 'Settings Updated')
+              homebridge.hideSpinner()
+            } catch (err) {
+              homebridge.toast.error(err.message, 'Error')
+              homebridge.hideSpinner()
+            }
+          })
+
           document.getElementById('deviceTable').style.display = 'inline-table'
           homebridge.hideSpinner()
         }
