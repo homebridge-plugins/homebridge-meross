@@ -15,6 +15,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - updated dependencies
 - updated dependencies + lint rules
 - update workflow action versions
+- fix deprecate past releases script
 
 ## v10.10.3 (2025-12-05)
 

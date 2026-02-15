@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 24.x
           registry-url: https://registry.npmjs.org/
 
       - name: Update npm to latest version
@@ -89,12 +89,14 @@ jobs:
 
           gh release list --limit 100 --json tagName --jq '.[] | select(.tagName | test("-"; "i")) | .tagName' | while read -r TAG; do
             BASE_VERSION="${TAG%%-*}"
+            # Remove 'v' prefix if present for version comparison
+            BASE_VERSION_NO_V="${BASE_VERSION#v}"
 
-            if [ "$(printf "%s\n%s" "$BASE_VERSION" "$LATEST_VERSION" | sort -V | tail -n1)" == "$LATEST_VERSION" ]; then
-              echo "Deleting GitHub release: $TAG (base version: $BASE_VERSION)"
+            if [ "$(printf "%s\n%s" "$BASE_VERSION_NO_V" "$LATEST_VERSION" | sort -V | tail -n1)" == "$LATEST_VERSION" ]; then
+              echo "Deleting GitHub release: $TAG (base version: $BASE_VERSION_NO_V)"
               gh release delete "$TAG" --yes
             else
-              echo "Skipping GitHub release: $TAG (base version: $BASE_VERSION is newer than $LATEST_VERSION)"
+              echo "Skipping GitHub release: $TAG (base version: $BASE_VERSION_NO_V is newer than $LATEST_VERSION)"
             fi
           done
         env:
@@ -110,12 +112,14 @@ jobs:
           echo "Finding pre-release tags with a hyphen in the name..."
           git tag -l "*-*" | while read -r TAG; do
             BASE_VERSION="${TAG%%-*}"
+            # Remove 'v' prefix if present for version comparison
+            BASE_VERSION_NO_V="${BASE_VERSION#v}"
 
-            if [ "$(printf "%s\n%s" "$BASE_VERSION" "$LATEST_VERSION" | sort -V | tail -n1)" == "$LATEST_VERSION" ]; then
-              echo "Deleting tag: $TAG (base version: $BASE_VERSION)"
+            if [ "$(printf "%s\n%s" "$BASE_VERSION_NO_V" "$LATEST_VERSION" | sort -V | tail -n1)" == "$LATEST_VERSION" ]; then
+              echo "Deleting tag: $TAG (base version: $BASE_VERSION_NO_V)"
               git push origin ":refs/tags/$TAG"
             else
-              echo "Skipping tag: $TAG (base version: $BASE_VERSION is newer than $LATEST_VERSION)"
+              echo "Skipping tag: $TAG (base version: $BASE_VERSION_NO_V is newer than $LATEST_VERSION)"
             fi
           done
         env:
