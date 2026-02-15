@@ -3,34 +3,29 @@ import { antfu } from '@antfu/eslint-config'
 /** @type {typeof antfu} */
 export default antfu(
   {
-    ignores: [],
+    ignores: ['README.md'],
     jsx: false,
     rules: {
       'curly': ['error', 'multi-line'],
       'new-cap': 'off',
-      'jsdoc/check-alignment': 'warn',
-      'jsdoc/check-line-alignment': 'warn',
-      'jsdoc/require-returns-check': 0,
-      'jsdoc/require-returns-description': 0,
       'no-undef': 'error',
       'perfectionist/sort-exports': 'error',
       'perfectionist/sort-imports': [
         'error',
         {
           groups: [
-            'type',
-            'internal-type',
+            ['type-builtin', 'type-external', 'type-internal'],
+            ['type-parent', 'type-sibling', 'type-index'],
             'builtin',
             'external',
             'internal',
-            ['parent-type', 'sibling-type', 'index-type'],
             ['parent', 'sibling', 'index'],
-            'object',
+            'side-effect',
             'unknown',
           ],
           order: 'asc',
           type: 'natural',
-          newlinesBetween: 'always',
+          newlinesBetween: 1,
         },
       ],
       'perfectionist/sort-named-exports': 'error',
@@ -41,8 +36,8 @@ export default antfu(
       'style/quote-props': ['error', 'consistent-as-needed'],
       'test/no-only-tests': 'error',
       'unicorn/no-useless-spread': 'error',
-      'unused-imports/no-unused-vars': ['error', { caughtErrors: 'none' }],
+      'unused-imports/no-unused-vars': 0,
     },
-    typescript: false,
+    typescript: true,
   },
 )

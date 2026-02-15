@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 - determine debug mode from `-D` flag
 - updated dependencies
+- updated dependencies + lint rules
 
 ## v10.10.3 (2025-12-05)
 
