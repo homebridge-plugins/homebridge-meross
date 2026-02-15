@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Added
 
 - add garage model `MSG150` (beta)
+- add hub model `MSH450` (beta)
 
 ### Changes
 
