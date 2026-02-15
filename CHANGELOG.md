@@ -4,6 +4,10 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 ## v10.10.4 (Unreleased)
 
+### Added
+
+- add garage model `MSG150` (beta)
+
 ### Changes
 
 - determine debug mode from `-D` flag

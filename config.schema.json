@@ -1412,6 +1412,10 @@
                 "enum": ["MSG100"]
               },
               {
+                "title": "MSG150",
+                "enum": ["MSG150"]
+              },
+              {
                 "title": "MSG200",
                 "enum": ["MSG200"]
               }
