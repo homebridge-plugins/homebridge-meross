@@ -40,4 +40,13 @@ export default antfu(
     },
     typescript: true,
   },
+  {
+    files: ['**/*.md'],
+    rules: {
+      'perfectionist/sort-exports': 'off',
+      'perfectionist/sort-imports': 'off',
+      'perfectionist/sort-named-exports': 'off',
+      'perfectionist/sort-named-imports': 'off',
+    },
+  },
 )

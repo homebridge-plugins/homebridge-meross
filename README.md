@@ -3,7 +3,7 @@
 </p>
 <span align="center">
 
-# homebridge-meross
+## homebridge-meross
 
 Homebridge plugin to integrate Meross devices into HomeKit
 
