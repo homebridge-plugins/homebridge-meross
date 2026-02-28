@@ -4,6 +4,11 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 ## v10.11.1 (Pending Release)
 
+### Added
+
+- support new models
+  - `MSS100` `MOP320` `MTS100` `MTS150P` `MST100` `MTS205` `P11` `R10` `R11` `R21` (beta)
+
 ### Changed
 
 - dependency updates + maintenance

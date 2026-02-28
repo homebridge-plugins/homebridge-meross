@@ -182,6 +182,10 @@
             "type": "string",
             "oneOf": [
               {
+                "title": "MSS100",
+                "enum": ["MSS100"]
+              },
+              {
                 "title": "MSS105",
                 "enum": ["MSS105"]
               },
@@ -316,6 +320,18 @@
               {
                 "title": "MSS810",
                 "enum": ["MSS810"]
+              },
+              {
+                "title": "P11",
+                "enum": ["P11"]
+              },
+              {
+                "title": "R10",
+                "enum": ["R10"]
+              },
+              {
+                "title": "R11",
+                "enum": ["R11"]
               }
             ],
             "condition": {
@@ -550,6 +566,14 @@
               {
                 "title": "MSS630",
                 "enum": ["MSS630"]
+              },
+              {
+                "title": "MOP320",
+                "enum": ["MOP320"]
+              },
+              {
+                "title": "R21",
+                "enum": ["R21"]
               }
             ],
             "condition": {
@@ -1012,6 +1036,10 @@
               {
                 "title": "MOD100",
                 "enum": ["MOD100"]
+              },
+              {
+                "title": "MOD150",
+                "enum": ["MOD150"]
               }
             ],
             "condition": {
@@ -1311,6 +1339,10 @@
               {
                 "title": "MTS200B",
                 "enum": ["MTS200B"]
+              },
+              {
+                "title": "MTS205",
+                "enum": ["MTS205"]
               },
               {
                 "title": "MTS960",
