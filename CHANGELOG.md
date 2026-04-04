@@ -24,6 +24,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: mqtt memory leak on command timeout
 - fix: fakegato unsubscribe removing wrong service
 - fix: fakegato immediate callback missing averaging
+- fix: HP110A incorrectly mapped as switch
 
 ## v10.12.0 (2026-02-28)
 
