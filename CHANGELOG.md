@@ -25,6 +25,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: fakegato unsubscribe removing wrong service
 - fix: fakegato immediate callback missing averaging
 - fix: HP110A incorrectly mapped as switch
+- fix: undefined brightness step in fan device
 
 ## v10.12.0 (2026-02-28)
 
