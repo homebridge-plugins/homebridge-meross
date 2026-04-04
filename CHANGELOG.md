@@ -28,6 +28,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: undefined brightness step in fan device
 - fix: extra bracket in mqtt error log
 - fix: default connection value mismatch
+- fix: mqtt disconnect not clearing state
 
 ## v10.12.0 (2026-02-28)
 
