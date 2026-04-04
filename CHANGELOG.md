@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Added
 
 - added `MS130` to hub subdevice models
+- added `MRS105` to roller models
 
 ### Changed
 
