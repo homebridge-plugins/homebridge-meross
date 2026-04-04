@@ -29,6 +29,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: extra bracket in mqtt error log
 - fix: default connection value mismatch
 - fix: mqtt disconnect not clearing state
+- fix: string radix in fakegato toString call
 
 ## v10.12.0 (2026-02-28)
 
