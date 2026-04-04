@@ -1563,6 +1563,10 @@
               {
                 "title": "MRS100",
                 "enum": ["MRS100"]
+              },
+              {
+                "title": "MRS105",
+                "enum": ["MRS105"]
               }
             ],
             "condition": {
