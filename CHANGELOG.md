@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: null safety for mqtt message header
 - fix: missing param in mqtt queued retry
 - fix: wrong property name in error logging
+- fix: mqtt memory leak on command timeout
 
 ## v10.12.0 (2026-02-28)
 
