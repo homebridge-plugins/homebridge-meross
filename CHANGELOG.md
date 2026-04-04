@@ -27,6 +27,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: HP110A incorrectly mapped as switch
 - fix: undefined brightness step in fan device
 - fix: extra bracket in mqtt error log
+- fix: default connection value mismatch
 
 ## v10.12.0 (2026-02-28)
 
