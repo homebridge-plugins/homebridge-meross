@@ -19,6 +19,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: missing param in subdevice retry call
 - fix: device name mutation in garage channels
 - fix: null safety for mqtt message header
+- fix: missing param in mqtt queued retry
 
 ## v10.12.0 (2026-02-28)
 
