@@ -22,6 +22,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: missing param in mqtt queued retry
 - fix: wrong property name in error logging
 - fix: mqtt memory leak on command timeout
+- fix: fakegato unsubscribe removing wrong service
 
 ## v10.12.0 (2026-02-28)
 
