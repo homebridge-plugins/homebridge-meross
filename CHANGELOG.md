@@ -16,6 +16,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Fixed
 
 - fix: correct night white mode characteristic
+- fix: missing param in subdevice retry call
 
 ## v10.12.0 (2026-02-28)
 
