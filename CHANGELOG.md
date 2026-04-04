@@ -30,6 +30,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: default connection value mismatch
 - fix: mqtt disconnect not clearing state
 - fix: string radix in fakegato toString call
+- fix: incorrect unit casing in eve characteristic
 
 ## v10.12.0 (2026-02-28)
 
