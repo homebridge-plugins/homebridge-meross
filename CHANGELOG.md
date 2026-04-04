@@ -17,6 +17,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 - fix: correct night white mode characteristic
 - fix: missing param in subdevice retry call
+- fix: device name mutation in garage channels
 
 ## v10.12.0 (2026-02-28)
 
