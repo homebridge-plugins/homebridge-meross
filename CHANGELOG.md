@@ -4,6 +4,10 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 ## v10.12.1 (Pending Release)
 
+### Added
+
+- added `MS130` to hub subdevice models
+
 ### Changed
 
 - dependency updates + code lint fixes
