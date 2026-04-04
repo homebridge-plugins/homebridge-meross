@@ -13,6 +13,10 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 - dependency updates + code lint fixes
 
+### Fixed
+
+- fix: correct night white mode characteristic
+
 ## v10.12.0 (2026-02-28)
 
 ### Added
