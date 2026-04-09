@@ -1345,6 +1345,22 @@
                 "enum": ["MTS205"]
               },
               {
+                "title": "MTS205B",
+                "enum": ["MTS205B"]
+              },
+              {
+                "title": "MTS215",
+                "enum": ["MTS215"]
+              },
+              {
+                "title": "MTS215B",
+                "enum": ["MTS215B"]
+              },
+              {
+                "title": "MTS300",
+                "enum": ["MTS300"]
+              },
+              {
                 "title": "MTS960",
                 "enum": ["MTS960"]
               }

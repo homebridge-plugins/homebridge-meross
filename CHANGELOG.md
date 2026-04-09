@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.13.2 (Pending Release)
+
+### Added
+
+- feat: added new thermostat models
+
 ## v10.13.1 (2026-04-06)
 
 ### Fixed
