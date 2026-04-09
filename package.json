@@ -57,13 +57,13 @@
   },
   "dependencies": {
     "@homebridge/plugin-ui-utils": "^2.2.3",
-    "axios": "^1.14.0",
+    "axios": "^1.15.0",
     "mqtt": "^5.15.1",
     "node-persist": "^4.0.4",
-    "p-queue": "^9.1.1",
+    "p-queue": "^9.1.2",
     "p-timeout": "^7.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^8.0.0"
+    "@antfu/eslint-config": "^8.1.1"
   }
 }

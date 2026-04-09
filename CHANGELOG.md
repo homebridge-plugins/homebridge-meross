@@ -11,6 +11,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - chore: remove official node 20 support
+- chore: dependency updates
 
 ## v10.13.1 (2026-04-06)
 
