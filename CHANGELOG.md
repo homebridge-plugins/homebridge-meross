@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.14.1 (Pending Release)
+
+### Changed
+
+- remove node 20 from build workflow
+
 ## v10.14.0 (2026-04-09)
 
 ### Added
