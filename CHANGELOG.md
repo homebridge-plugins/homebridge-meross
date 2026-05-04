@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - remove node 20 from build workflow
 - feat: show/hide devices in custom ui device list (#732) (@burtherman)
 - fix: fix js syntax errors in config schema file
+- chore: dependency updates
 
 ## v10.14.0 (2026-04-09)
 
