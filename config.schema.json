@@ -173,7 +173,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && model.singleDevices[arrayIndices].serialNumber && model.singleDevices[arrayIndices].serialNumber.length === 32 && model.singleDevices[arrayIndices].connection !== 'local' && !model.singleDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.singleDevices && model.singleDevices[arrayIndices] && model.singleDevices[arrayIndices].serialNumber && model.singleDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -463,7 +463,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.multiDevices && model.multiDevices[arrayIndices] && model.multiDevices[arrayIndices].serialNumber && model.multiDevices[arrayIndices].serialNumber.length === 32 && model.multiDevices[arrayIndices].connection !== 'local' && !model.multiDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.multiDevices && model.multiDevices[arrayIndices] && model.multiDevices[arrayIndices].serialNumber && model.multiDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -687,7 +687,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.lightDevices && model.lightDevices[arrayIndices] && model.lightDevices[arrayIndices].serialNumber && model.lightDevices[arrayIndices].serialNumber.length === 32 && model.lightDevices[arrayIndices].connection !== 'local' && !model.lightDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.lightDevices && model.lightDevices[arrayIndices] && model.lightDevices[arrayIndices].serialNumber && model.lightDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -930,7 +930,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && model.fanDevices[arrayIndices].serialNumber && model.fanDevices[arrayIndices].serialNumber.length === 32 && model.fanDevices[arrayIndices].connection !== 'local' && !model.fanDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && model.fanDevices[arrayIndices].serialNumber && model.fanDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1025,7 +1025,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.diffuserDevices && model.diffuserDevices[arrayIndices] && model.diffuserDevices[arrayIndices].serialNumber && model.diffuserDevices[arrayIndices].serialNumber.length === 32 && model.diffuserDevices[arrayIndices].connection !== 'local' && !model.diffuserDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.diffuserDevices && model.diffuserDevices[arrayIndices] && model.diffuserDevices[arrayIndices].serialNumber && model.diffuserDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1134,7 +1134,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.purifierDevices && model.purifierDevices[arrayIndices] && model.purifierDevices[arrayIndices].serialNumber && model.purifierDevices[arrayIndices].serialNumber.length === 32 && model.purifierDevices[arrayIndices].connection !== 'local' && !model.purifierDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.purifierDevices && model.purifierDevices[arrayIndices] && model.purifierDevices[arrayIndices].serialNumber && model.purifierDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1229,7 +1229,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.humidifierDevices && model.humidifierDevices[arrayIndices] && model.humidifierDevices[arrayIndices].serialNumber && model.humidifierDevices[arrayIndices].serialNumber.length === 32 && model.humidifierDevices[arrayIndices].connection !== 'local' && !model.humidifierDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.humidifierDevices && model.humidifierDevices[arrayIndices] && model.humidifierDevices[arrayIndices].serialNumber && model.humidifierDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1324,7 +1324,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.thermostatDevices && model.thermostatDevices[arrayIndices] && model.thermostatDevices[arrayIndices].serialNumber && model.thermostatDevices[arrayIndices].serialNumber.length === 32 && model.thermostatDevices[arrayIndices].connection !== 'local' && !model.thermostatDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.thermostatDevices && model.thermostatDevices[arrayIndices] && model.thermostatDevices[arrayIndices].serialNumber && model.thermostatDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1447,7 +1447,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.garageDevices && model.garageDevices[arrayIndices] && model.garageDevices[arrayIndices].serialNumber && model.garageDevices[arrayIndices].serialNumber.length === 32 && model.garageDevices[arrayIndices].connection !== 'local' && !model.garageDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.garageDevices && model.garageDevices[arrayIndices] && model.garageDevices[arrayIndices].serialNumber && model.garageDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1568,7 +1568,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.rollerDevices && model.rollerDevices[arrayIndices] && model.rollerDevices[arrayIndices].serialNumber && model.rollerDevices[arrayIndices].serialNumber.length === 32 && model.rollerDevices[arrayIndices].connection !== 'local' && !model.rollerDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.rollerDevices && model.rollerDevices[arrayIndices] && model.rollerDevices[arrayIndices].serialNumber && model.rollerDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {
@@ -1697,7 +1697,7 @@
             "title": "Hide From HomeKit",
             "description": "If true, this accessory will be removed and ignored from HomeKit.",
             "condition": {
-              "functionBody": "return (model.babyDevices && model.babyDevices[arrayIndices] && model.babyDevices[arrayIndices].serialNumber && model.babyDevices[arrayIndices].serialNumber.length === 32 && model.babyDevices[arrayIndices].connection !== 'local' && !model.babyDevices[arrayIndices].deviceUrl);"
+              "functionBody": "return (model.babyDevices && model.babyDevices[arrayIndices] && model.babyDevices[arrayIndices].serialNumber && model.babyDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
           "model": {

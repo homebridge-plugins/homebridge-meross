@@ -114,6 +114,17 @@
           <th scope="row">Firmware Version</th>
           <td id="firmware"></td>
         </tr>
+        <tr>
+          <th scope="row">Hide from HomeKit</th>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="hideDevice">
+              <label class="custom-control-label" for="hideDevice">
+                Hide this device from HomeKit
+              </label>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -294,6 +305,80 @@
           document.getElementById('mac_address').innerHTML = context.macAddress || 'N/A'
           document.getElementById('hardware').innerHTML = context.hardware || 'N/A'
           document.getElementById('firmware').innerHTML = context.firmware || 'N/A'
+
+          // Handle hide device checkbox
+          const hideCheckbox = document.getElementById('hideDevice')
+          const deviceUUID = context.serialNumber.toLowerCase().replace(/[^a-z0-9]/g, '')
+          const deviceArrays = [
+            'singleDevices', 'multiDevices', 'lightDevices', 'fanDevices',
+            'diffuserDevices', 'purifierDevices', 'humidifierDevices',
+            'thermostatDevices', 'garageDevices', 'rollerDevices',
+            'babyDevices', 'sensorDevices',
+          ]
+          const findEntry = (cfg) => {
+            for (const key of deviceArrays) {
+              const arr = cfg[0]?.[key]
+              if (!Array.isArray(arr)) continue
+              const idx = arr.findIndex(e => e.serialNumber?.toLowerCase().replace(/[^a-z0-9]/g, '') === deviceUUID)
+              if (idx !== -1) return { key, idx, entry: arr[idx] }
+            }
+            return null
+          }
+
+          // Check if device is currently hidden
+          const config = await homebridge.getPluginConfig()
+          const existing = findEntry(config)
+          hideCheckbox.checked = !!existing?.entry?.ignoreDevice
+
+          // Remove previous event listeners by cloning the element
+          const newCheckbox = hideCheckbox.cloneNode(true)
+          hideCheckbox.parentNode.replaceChild(newCheckbox, hideCheckbox)
+
+          // Add event listener for checkbox changes
+          newCheckbox.addEventListener('change', async (e) => {
+            try {
+              homebridge.showSpinner()
+              const cfg = await homebridge.getPluginConfig()
+              const found = findEntry(cfg)
+
+              if (e.target.checked) {
+                if (found) {
+                  cfg[0][found.key][found.idx].ignoreDevice = true
+                } else {
+                  const arrayKey = await homebridge.request('/getDeviceConfigKey', { model: context.model })
+                  if (!arrayKey) {
+                    homebridge.toast.error(`Unsupported device model: ${context.model}`, 'Cannot hide device')
+                    e.target.checked = false
+                    homebridge.hideSpinner()
+                    return
+                  }
+                  if (!Array.isArray(cfg[0][arrayKey])) {
+                    cfg[0][arrayKey] = []
+                  }
+                  cfg[0][arrayKey].push({
+                    name: thisAcc.displayName,
+                    serialNumber: deviceUUID,
+                    ignoreDevice: true,
+                  })
+                }
+                homebridge.toast.success(`${thisAcc.displayName} will be hidden from HomeKit after restart`, 'Device Hidden')
+              } else if (found) {
+                cfg[0][found.key][found.idx].ignoreDevice = false
+                homebridge.toast.success(`${thisAcc.displayName} will be shown in HomeKit after restart`, 'Device Unhidden')
+              }
+
+              await homebridge.updatePluginConfig(cfg)
+
+              // Switch to Settings tab to sync the form with updated config
+              showSettings()
+              homebridge.toast.info('Please click Save to persist your changes', 'Settings Updated')
+              homebridge.hideSpinner()
+            } catch (err) {
+              homebridge.toast.error(err.message, 'Error')
+              homebridge.hideSpinner()
+            }
+          })
+
           document.getElementById('deviceTable').style.display = 'inline-table'
           homebridge.hideSpinner()
         }
