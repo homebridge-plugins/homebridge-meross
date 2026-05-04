@@ -1221,7 +1221,7 @@
             "type": "string",
             "format": "ipv4",
             "condition": {
-              "functionBody": "return (model.humidifierDevices && model.humidifierDevices[arrayIndices] && model.humidifierDevices[arrayIndices].serialNumber && model.humidifierDevices[arrayIndices].serialNumber.length === 32 && ((!model.username && !model.password && model.userkey) || (model.username && model.password && ((model.connection === 'local' && [undefined, 'local'].includes(model.humidifierDevices[arrayIndices].connection)) || || (model.connection !== 'local' && model.humidifierDevices[arrayIndices].connection === 'local')))));"
+              "functionBody": "return (model.humidifierDevices && model.humidifierDevices[arrayIndices] && model.humidifierDevices[arrayIndices].serialNumber && model.humidifierDevices[arrayIndices].serialNumber.length === 32 && ((!model.username && !model.password && model.userkey) || (model.username && model.password && ((model.connection === 'local' && [undefined, 'local'].includes(model.humidifierDevices[arrayIndices].connection)) || (model.connection !== 'local' && model.humidifierDevices[arrayIndices].connection === 'local')))));"
             }
           },
           "ignoreDevice": {
@@ -1316,7 +1316,7 @@
             "type": "string",
             "format": "ipv4",
             "condition": {
-              "functionBody": "return (model.thermostatDevices && model.thermostatDevices[arrayIndices] && model.thermostatDevices[arrayIndices].serialNumber && model.thermostatDevices[arrayIndices].serialNumber.length === 32 && ((!model.username && !model.password && model.userkey) || (model.username && model.password && ((model.connection === 'local' && [undefined, 'local'].includes(model.thermostatDevices[arrayIndices].connection)) || || (model.connection !== 'local' && model.thermostatDevices[arrayIndices].connection === 'local')))));"
+              "functionBody": "return (model.thermostatDevices && model.thermostatDevices[arrayIndices] && model.thermostatDevices[arrayIndices].serialNumber && model.thermostatDevices[arrayIndices].serialNumber.length === 32 && ((!model.username && !model.password && model.userkey) || (model.username && model.password && ((model.connection === 'local' && [undefined, 'local'].includes(model.thermostatDevices[arrayIndices].connection)) || (model.connection !== 'local' && model.thermostatDevices[arrayIndices].connection === 'local')))));"
             }
           },
           "ignoreDevice": {
