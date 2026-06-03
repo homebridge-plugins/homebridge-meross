@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changes
 
 - fix(platform): do not serialize hidden accessories to the cache
+- chore: dependency updates
 
 ## v10.15.1 (2026-05-05)
 
