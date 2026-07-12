@@ -8,6 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 - fix: clarify config uses meross email not username (#786)
 - chore: update actions/checkout to v7
+- chore: remove stray exit 1 from deprecation workflow
 
 ## v10.15.2 (2026-06-03)
 
