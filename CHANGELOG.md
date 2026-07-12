@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: update actions/checkout to v7
 - chore: remove stray exit 1 from deprecation workflow
 - chore: dependency updates
+- docs: note homebridge v2 support in prerequisites (#782)
 
 ## v10.15.2 (2026-06-03)
 
