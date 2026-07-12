@@ -12,6 +12,8 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: dependency updates
 - docs: note homebridge v2 support in prerequisites (#782)
 - feat: add support for the PSX340 power strip (#783)
+- feat: add support for MRS200 and MST200 subdevices
+- feat: add PSX340 and MRS200 to the config schema model lists
 
 ## v10.15.2 (2026-06-03)
 
