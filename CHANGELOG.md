@@ -2,7 +2,7 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
-## v10.15.3 (Pending Release)
+## v10.16.0 (Pending Release)
 
 ### Changed
 
@@ -11,6 +11,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: remove stray exit 1 from deprecation workflow
 - chore: dependency updates
 - docs: note homebridge v2 support in prerequisites (#782)
+- feat: add support for the PSX340 power strip (#783)
 
 ## v10.15.2 (2026-06-03)
 
