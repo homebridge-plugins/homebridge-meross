@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.15.3 (Pending Release)
+
+### Changed
+
+- fix: clarify config uses meross email not username (#786)
+
 ## v10.15.2 (2026-06-03)
 
 ### Changes

@@ -13,9 +13,9 @@
       "default": "Meross"
     },
     "username": {
-      "title": "Meross Username",
+      "title": "Meross Email Address",
       "type": "string",
-      "description": "Enter your Meross username to enable cloud devices."
+      "description": "Enter the email address for your Meross account to enable cloud devices."
     },
     "password": {
       "title": "Meross Password",
