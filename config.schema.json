@@ -516,6 +516,10 @@
                 "enum": ["MSS425EX"]
               },
               {
+                "title": "PSX340",
+                "enum": ["PSX340"]
+              },
+              {
                 "title": "MSS425F/SP425FW",
                 "enum": ["MSS425F"]
               },
@@ -1583,6 +1587,10 @@
               {
                 "title": "MRS105",
                 "enum": ["MRS105"]
+              },
+              {
+                "title": "MRS200",
+                "enum": ["MRS200"]
               }
             ],
             "condition": {
