@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - fix: clarify config uses meross email not username (#786)
+- chore: update actions/checkout to v7
 
 ## v10.15.2 (2026-06-03)
 
