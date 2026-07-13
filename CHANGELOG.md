@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - fix: use position control for rollers with hardware version 9.0.0 (#770)
+- chore: dependency updates
 
 ## v10.16.0 (2026-07-12)
 
