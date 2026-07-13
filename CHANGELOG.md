@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.16.1 (Pending Release)
+
+### Changed
+
+- fix: use position control for rollers with hardware version 9.0.0 (#770)
+
 ## v10.16.0 (2026-07-12)
 
 ### Changed
