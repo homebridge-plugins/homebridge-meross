@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.16.2 (Pending Release)
+
+### Changed
+
+- fix: treat the PSX340 as a HomeKit native model so it can be excluded (#783)
+
 ## v10.16.1 (2026-07-13)
 
 ### Changed
