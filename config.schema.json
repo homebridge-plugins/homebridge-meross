@@ -1271,7 +1271,7 @@
     },
     "thermostatDevices": {
       "type": "array",
-      "title": "Humidifier Devices",
+      "title": "Thermostat Devices",
       "description": "Optional settings for Meross thermostat devices.",
       "items": {
         "type": "object",

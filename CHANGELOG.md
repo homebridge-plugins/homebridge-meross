@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.16.3 (Pending Release)
+
+### Changed
+
+- fix: correct the thermostat devices section title in the config schema
+
 ## v10.16.2 (2026-07-13)
 
 ### Changed
