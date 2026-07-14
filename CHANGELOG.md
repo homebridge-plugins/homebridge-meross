@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.16.4 (Pending Release)
+
+### Changed
+
+- fix: never pass external accessories to the homebridge cache so saving no longer fails (#792)
+
 ## v10.16.3 (2026-07-13)
 
 ### Changed
