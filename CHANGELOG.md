@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - chore: remove the looking-for-maintainers message
+- chore(github): update the setup-node action to v7
 
 ## v10.16.4 (2026-07-14)
 
