@@ -35,7 +35,7 @@ Homebridge plugin to integrate Meross devices into HomeKit
 
 - [Installation](https://github.com/homebridge-plugins/homebridge-meross/wiki/Installation)
 - [Configuration](https://github.com/homebridge-plugins/homebridge-meross/wiki/Configuration)
-- [Beta Version](https://github.com/homebridge/homebridge/wiki/How-to-Install-Alternate-Plugin-Versions)
+- [Beta Version](https://github.com/homebridge-plugins/homebridge-meross/wiki/Beta-Version)
 - [Node Version](https://github.com/homebridge-plugins/homebridge-meross/wiki/Node-Version)
 
 ### Features
