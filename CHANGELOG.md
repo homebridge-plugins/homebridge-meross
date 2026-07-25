@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.17.0 (Pending Release)
+
+### Changed
+
+- feat(ui): add, remove and hide devices from the config via the my devices tab
+
 ## v10.16.5 (2026-07-18)
 
 ### Changed
