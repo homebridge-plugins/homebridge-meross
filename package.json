@@ -38,6 +38,7 @@
   "keywords": [
     "homebridge",
     "homebridge-plugin",
+    "supports-hap",
     "homebridge-meross",
     "hoobs",
     "hoobs-plugin",
