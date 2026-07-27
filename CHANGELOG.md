@@ -6,11 +6,20 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 ### Changed
 
+- docs: point the beta version link at this plugin's wiki
+- chore(branding): store the plugin header in the standard branding folder
+- chore(github): allow the codeql scan to be started manually
+- chore(deps): bump p-queue from 9.3.1 to 9.3.2 (#795)
+- chore(github): stop concurrent release runs racing for the same version
+- chore(github): use the shared homebridge action to deprecate past pre-releases
+- feat: add humidity, window-open, frost and overheat protection for the MTS215 and MTS215B thermostats (#798) (@marcaicart)
 - feat(ui): add, remove and hide devices from the config via the my devices tab
 - style(ui): standardise the custom ui layout and sync the support tab with the readme
 - feat(ui): add a remove all devices action to the my devices tab
 - chore: declare the supports-hap transport keyword for the homebridge ui
 - fix(ui): let the MTS300 be filed under thermostats in the my devices tab, instead of not matching any category
+- chore(deps): dependency updates
+- docs(changelog): list every unreleased commit in the pending section
 
 ## v10.16.5 (2026-07-18)
 
