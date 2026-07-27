@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.17.1 (2026-07-28)
+
+### Changed
+
+- fix(thermostat): use GET for Sensor.Latest on MTS215/MTS215B (#799) (@marcaicart)
+
 ## v10.17.0 (2026-07-27)
 
 ### Changed
