@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - style(ui): standardise the custom ui layout and sync the support tab with the readme
 - feat(ui): add a remove all devices action to the my devices tab
 - chore: declare the supports-hap transport keyword for the homebridge ui
+- fix(ui): let the MTS300 be filed under thermostats in the my devices tab, instead of not matching any category
 
 ## v10.16.5 (2026-07-18)
 
