@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.17.2 (Pending Release)
+
+### Changed
+
+- chore: add a test setup with tests for the shared helper functions
+
 ## v10.17.1 (2026-07-28)
 
 ### Changed
