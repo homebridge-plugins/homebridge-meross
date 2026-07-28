@@ -11,6 +11,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: use the same lint setup across every plugin
 - chore: add a changelog:sync script to populate the pending section from the commits
 - chore: count a repeated commit subject once when syncing the changelog
+- chore(github): check the changelog against the commits in ci
 
 ## v10.17.1 (2026-07-28)
 
