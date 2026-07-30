@@ -2,7 +2,7 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
-## v10.18.0 (Pending Release)
+## v10.18.0 (2026-07-30)
 
 ### Changed
 
