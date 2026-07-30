@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: count a repeated commit subject once when syncing the changelog
 - chore(github): check the changelog against the commits in ci
 - feat(thermostat): honour SummerMode on MTS215/MTS215B (@marcaicart)
+- chore(deps): dependency updates
 
 ## v10.17.1 (2026-07-28)
 
