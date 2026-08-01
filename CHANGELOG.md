@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - feat: add support for the mss110c single channel plug (#802)
+- chore(deps): dependency updates
 
 ## v10.18.0 (2026-07-30)
 
