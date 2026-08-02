@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - docs: add node 26 to the supported node versions
+- chore: exclude test files and the test config from the published package
 
 ## v10.19.0 (2026-08-01)
 
