@@ -15,6 +15,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: stop the hub's follow-up request growing on every poll until it fails
 - fix: stop the polling timers on shutdown for a local-only setup, not just a cloud one
 - fix: stop the garage's quick polling when the door is operated again mid-close
+- fix: apply the smoke sensor's battery reading, instead of failing on every update
 
 ## v10.19.0 (2026-08-01)
 
