@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: keep the cloud accessories when the device list could not be fetched
 - fix: stop the hub's follow-up request growing on every poll until it fails
 - fix: stop the polling timers on shutdown for a local-only setup, not just a cloud one
+- fix: stop the garage's quick polling when the door is operated again mid-close
 
 ## v10.19.0 (2026-08-01)
 
