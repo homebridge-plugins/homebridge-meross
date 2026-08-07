@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - docs: add node 26 to the supported node versions
 - chore: exclude test files and the test config from the published package
 - fix: restore debug logging when the plugin runs in a child bridge
+- fix: only turn adaptive lighting off when a colour is genuinely chosen elsewhere
 
 ## v10.19.0 (2026-08-01)
 
