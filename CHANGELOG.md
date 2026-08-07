@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: send a colour change when only the saturation moves, and mend the al cleanup
 - fix: keep the cloud accessories when the device list could not be fetched
 - fix: stop the hub's follow-up request growing on every poll until it fails
+- fix: stop the polling timers on shutdown for a local-only setup, not just a cloud one
 
 ## v10.19.0 (2026-08-01)
 
