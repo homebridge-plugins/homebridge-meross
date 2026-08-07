@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: exclude test files and the test config from the published package
 - fix: restore debug logging when the plugin runs in a child bridge
 - fix: only turn adaptive lighting off when a colour is genuinely chosen elsewhere
+- fix: send a colour change when only the saturation moves, and mend the al cleanup
 
 ## v10.19.0 (2026-08-01)
 
