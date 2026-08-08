@@ -1486,6 +1486,7 @@
             "type": "integer",
             "placeholder": "20",
             "minimum": 1,
+            "maximum": 2073600,
             "condition": {
               "functionBody": "return (model.garageDevices && model.garageDevices[arrayIndices] && model.garageDevices[arrayIndices].serialNumber && model.garageDevices[arrayIndices].serialNumber.length === 32 && !model.garageDevices[arrayIndices].ignoreDevice);"
             }
