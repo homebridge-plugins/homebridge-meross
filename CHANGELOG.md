@@ -18,6 +18,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: apply the smoke sensor's battery reading, instead of failing on every update
 - fix: reject a garage opening time so large it would make the reset timer fire immediately
 - test: record what every device handler builds, so a refactor can be shown to change nothing
+- fix(ms600): stop writing every incoming message to the warning log
 
 ## v10.19.0 (2026-08-01)
 
