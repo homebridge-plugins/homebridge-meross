@@ -20,6 +20,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - test: record what every device handler builds, so a refactor can be shown to change nothing
 - fix(ms600): stop writing every incoming message to the warning log
 - fix(ms600): accept a light level of zero, so a dark room is reported as dark
+- test: check the device handlers against payloads real devices sent
 
 ## v10.19.0 (2026-08-01)
 
