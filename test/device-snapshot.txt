@@ -1,0 +1,300 @@
+deviceBaby
+  polls every: 5s
+  service: Fan
+    RotationSpeed
+  service: InputSource [1]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [10]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [11]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [2]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [3]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [4]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [5]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [6]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [7]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [8]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: InputSource [9]
+    ConfiguredName
+    Identifier
+    InputSourceType
+    IsConfigured
+  service: Television
+    Active
+    ActiveIdentifier
+
+deviceCoolerSingle
+  polls every: 5s
+  service: HeaterCooler
+    Active
+    CurrentTemperature  [minStep=0.1]
+    HeatingThresholdTemperature  [minStep=0.5]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+
+deviceDiffuser
+  polls every: 5s
+  service: Fan [diffuser]
+    On
+    RotationSpeed  [minStep=50, validValues=[0,50,100]]
+  service: Lightbulb [light]
+    Brightness  [minStep=1]
+    DiffColourMode
+    DiffRainbowMode
+    DiffTemperatureMode
+    Hue
+    On
+    Saturation
+
+deviceFan
+  polls every: 5s
+  service: Fan [fan]
+    On
+    RotationSpeed  [minStep=25, validValues=[0,25,50,75,100]]
+  service: Lightbulb [light]
+    Brightness
+    On
+
+deviceGarageMain
+  polls every: 5s
+
+deviceGarageSingle
+  polls every: 5s
+  service: GarageDoorOpener
+    CurrentDoorState
+    LastActivation
+    ObstructionDetected
+    ResetTotal
+    TargetDoorState
+    TimesOpened
+
+deviceGarageSub
+  service: GarageDoorOpener
+    CurrentDoorState
+    LastActivation
+    ObstructionDetected
+    ResetTotal
+    TargetDoorState
+    TimesOpened
+
+deviceHeaterSingle
+  polls every: 5s
+  service: HeaterCooler
+    Active
+    CurrentTemperature  [minStep=0.1]
+    HeatingThresholdTemperature  [minStep=0.5]
+    TargetHeaterCoolerState  [minValue=0, maxValue=0, validValues=[0]]
+
+deviceHubContact
+  service: Battery
+    BatteryLevel
+
+deviceHubLeak
+  service: LeakSensor
+    LastActivation
+    LeakDetected
+
+deviceHubMain
+  polls every: 5s
+
+deviceHubSensor
+  service: Battery
+    BatteryLevel
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: TemperatureSensor
+    CurrentTemperature
+
+deviceHubSmoke
+  service: Battery
+    BatteryLevel
+
+deviceHubSprinkler
+  service: Battery
+    BatteryLevel
+  service: Valve
+    Active
+    InUse
+    RemainingDuration
+    SetDuration  [minValue=0, maxValue=43200, minStep=60]
+    ValveType
+
+deviceHubValve
+  service: Thermostat
+    CurrentTemperature
+    TargetHeatingCoolingState  [minValue=0, maxValue=1, validValues=[0,1]]
+    TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
+    ValveAutoMode
+    ValveCoolMode
+    ValveEconomyMode
+    ValveHeatMode
+    ValveWindowOpen
+
+deviceHumidifier
+  polls every: 5s
+  service: Fan
+    On
+    RotationSpeed  [minStep=50, validValues=[0,50,100]]
+  service: Lightbulb
+    Brightness  [minStep=100, validValues=[0,100]]
+    Hue
+    On
+    Saturation
+
+deviceLightCCT
+  polls every: 5s
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    On
+
+deviceLightDimmer
+  polls every: 5s
+  service: Lightbulb
+    Brightness  [minStep=1]
+    On
+
+deviceLightRGB
+  polls every: 5s
+  service: Lightbulb
+    Brightness  [minStep=1]
+    ColorTemperature
+    Hue
+    On
+    Saturation
+
+deviceOutletMulti
+  polls every: 5s
+  service: Outlet
+    On
+
+deviceOutletSingle
+  polls every: 5s
+  service: Outlet
+    On
+
+devicePowerStrip
+  polls every: 5s
+
+devicePurifier
+  polls every: 5s
+  service: AirPurifier
+    Active
+    LockPhysicalControls
+    RotationSpeed  [minStep=25, validValues=[0,25,50,75,100]]
+    TargetAirPurifierState  [minValue=1, maxValue=1, validValues=[1]]
+
+devicePurifierSingle
+  polls every: 5s
+  service: AirPurifier
+    Active
+    TargetAirPurifierState  [minValue=1, maxValue=1, validValues=[1]]
+
+deviceRoller
+  polls every: 5s
+  service: Switch [close]
+    On
+  service: Switch [open]
+    On
+  service: Switch [stop]
+    On
+
+deviceRollerLocation
+  polls every: 5s
+  service: WindowCovering
+    CurrentPosition
+    TargetPosition
+
+deviceSensorPresence
+  polls every: 5s
+  service: LightSensor
+    CurrentAmbientLightLevel
+  service: OccupancySensor
+    OccupancyDetected
+
+deviceSwitchMulti
+  polls every: 5s
+  service: Switch
+    On
+
+deviceSwitchSingle
+  polls every: 5s
+  service: Switch
+    On
+
+deviceTemplate
+  polls every: 5s
+
+deviceThermostat
+  polls every: 5s
+  service: Thermostat
+    CurrentTemperature
+    TargetHeatingCoolingState  [minValue=0, maxValue=1, validValues=[0,1]]
+    TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
+    ValveAutoMode
+    ValveCoolMode
+    ValveEconomyMode
+    ValveHeatMode
+    ValveWindowOpen
+
+deviceThermostatMts215
+  polls every: 5s
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: Thermostat
+    CurrentTemperature
+    TargetHeatingCoolingState  [minValue=0, maxValue=null, validValues=[null,null]]
+    TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
+    ValveAutoMode
+    ValveCoolMode
+    ValveEconomyMode
+    ValveHeatMode
+
+deviceThermostatMts300
+  polls every: 5s
+  service: Fan [fan]
+    On
+    RotationSpeed  [minStep=33, validValues=[0,33,66,100]]
+  service: HumiditySensor
+    CurrentRelativeHumidity
+  service: Thermostat
+    CurrentTemperature
+    TargetHeatingCoolingState  [minValue=0, maxValue=3, validValues=[0,1,2,3]]
+    TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
