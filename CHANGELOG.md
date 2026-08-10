@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(ms600): stop writing every incoming message to the warning log
 - fix(ms600): accept a light level of zero, so a dark room is reported as dark
 - test: check the device handlers against payloads real devices sent
+- chore(deps): dependency updates
 
 ## v10.19.0 (2026-08-01)
 
