@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - fix: keep saving eve history for a device with a slash in its name
+- fix: write eve history atomically, so an interrupted write cannot corrupt it
 
 ## v10.19.1 (2026-08-09)
 
