@@ -8,6 +8,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 
 - feat: recognise the MA151 smoke alarm that pairs with the MSH450 hub (#803)
 - fix: give the MS130 and MS130H a handler, so they stop appearing as an empty accessory (#803)
+- fix: read a hub sensor's temperature and humidity whatever the model names them (#803)
 
 ## v10.19.2 (2026-08-11)
 

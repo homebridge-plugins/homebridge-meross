@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, expect, it } from 'vitest'
 
+import { readingsFrom } from '../lib/device/hub-main.js'
 import platformConsts from '../lib/utils/constants.js'
 
 /**
@@ -62,5 +63,29 @@ describe('hub sub-device models', () => {
     // an accessory that did nothing at all.
     expect(dispatchedModels()).toContain('MS130')
     expect(dispatchedModels()).toContain('MS130H')
+  })
+})
+
+/**
+ * Recognising a model only gets an accessory built. It also has to receive the
+ * hub's readings, and those arrive wrapped in an object named after the model —
+ * `ms100` on an MS100, `ms130` on an MS130. Keying on one name is what left the
+ * MS130 with an accessory and no data (#803).
+ */
+describe('finding a sub-device\'s readings in the hub digest', () => {
+  it('finds them under the MS100 key', () => {
+    const subdevice = { id: '01', ms100: { latestTemperature: 213, latestHumidity: 455, voltage: 2800 } }
+    expect(readingsFrom(subdevice)).toEqual(subdevice.ms100)
+  })
+
+  it('finds them under a model key it has never seen', () => {
+    const subdevice = { id: '02', ms130: { latestTemperature: 197, latestHumidity: 501, voltage: 2750 } }
+    expect(readingsFrom(subdevice)).toEqual(subdevice.ms130)
+  })
+
+  it('ignores a sub-device that reports no readings', () => {
+    expect(readingsFrom({ id: '03', status: 2 })).toBeUndefined()
+    expect(readingsFrom({ id: '04', mst: { onoff: 1, voltage: 2900 } })).toBeUndefined()
+    expect(readingsFrom(undefined)).toBeUndefined()
   })
 })
