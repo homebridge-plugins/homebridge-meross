@@ -29,15 +29,14 @@ function dispatchedModels() {
 }
 
 /**
- * ⚠️ Declared supported, but with no case in the dispatch switch.
+ * Models declared supported but with no case in the dispatch switch.
  *
- * These fall through to `default: return`, which happens AFTER the accessory
- * has been added — so the owner gets an accessory that has no services, never
- * receives an update, and produces no warning explaining why. That is a
- * separate bug from the MA151 one; this list exists so the gap is recorded
- * rather than silently tolerated, and so fixing it makes this test speak up.
+ * These fall through to `default`, which happens AFTER the accessory has been
+ * added — so the owner would get an accessory with no services that never
+ * receives an update. MS130/MS130H sat here until #803; the list is kept (and
+ * asserted empty) so the next one cannot slip in unnoticed.
  */
-const KNOWN_UNDISPATCHED = ['MS130', 'MS130H']
+const KNOWN_UNDISPATCHED = []
 
 describe('hub sub-device models', () => {
   it('every supported model has a handler to dispatch to', () => {
@@ -56,5 +55,12 @@ describe('hub sub-device models', () => {
   it('includes the MA151 that pairs with the MSH450 hub (#803)', () => {
     expect(platformConsts.models.hubSub).toContain('MA151')
     expect(dispatchedModels()).toContain('MA151')
+  })
+
+  it('dispatches the MS130 temperature sensors (#803)', () => {
+    // Listed as supported since before #803 but with no case, so an owner got
+    // an accessory that did nothing at all.
+    expect(dispatchedModels()).toContain('MS130')
+    expect(dispatchedModels()).toContain('MS130H')
   })
 })
