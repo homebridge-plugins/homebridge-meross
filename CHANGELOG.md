@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.19.3 (Pending Release)
+
+### Changed
+
+- feat: recognise the MA151 smoke alarm that pairs with the MSH450 hub (#803)
+
 ## v10.19.2 (2026-08-11)
 
 ### Changed
