@@ -326,6 +326,10 @@
                 "enum": ["MSS810"]
               },
               {
+                "title": "MSS815",
+                "enum": ["MSS815"]
+              },
+              {
                 "title": "P11",
                 "enum": ["P11"]
               },
