@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.20.2 (Pending Release)
+
+### Changed
+
+- fix: give Meross cloud requests a timeout, and wait longer between retries while the cloud is unreachable (#815)
+
 ## v10.20.1 (2026-10-18)
 
 ### Changed
