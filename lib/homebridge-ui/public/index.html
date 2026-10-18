@@ -270,6 +270,14 @@
       // by hand in a different format still counts as the same device
       const looseId = id => (id || '').toString().toLowerCase().replace(/[^a-z0-9]+/g, '')
 
+      // A hub's sensors share the hub's config entry, so hiding one sensor
+      // lists its id in the entry's ignoreSubdevices - ignoreDevice there would
+      // hide the hub and every sensor on it (#816)
+      const subIdsOf = entry => (entry?.ignoreSubdevices || '').split(',').map(id => id.trim()).filter(Boolean)
+      const isHiddenIn = (entry, acc) => acc.context.subSerialNumber
+        ? subIdsOf(entry).includes(acc.context.subSerialNumber)
+        : !!entry?.ignoreDevice
+
       const getConfigBlocks = async () => {
         const blocks = await homebridge.getPluginConfig()
         if (!blocks.length) {
@@ -332,7 +340,9 @@
         if (!Array.isArray(config[arrayKey])) {
           config[arrayKey] = []
         }
-        config[arrayKey].push({ name: acc.displayName, serialNumber: looseId(acc.context.serialNumber) })
+        // A hub sensor's entry is the hub's own, so name it after the hub
+        const name = acc.context.subSerialNumber ? `${acc.context.model} hub` : acc.displayName
+        config[arrayKey].push({ name, serialNumber: looseId(acc.context.serialNumber) })
         return true
       }
 
@@ -351,7 +361,7 @@
             // re-check and never add a duplicate - just correct the button
             if (found) {
               setConfigButton(true)
-              setHideControl(!!config[found.key][found.index].ignoreDevice)
+              setHideControl(isHiddenIn(config[found.key][found.index], acc))
               homebridge.toast.info(acc.displayName + ' is already in the config.', 'Not Added')
               return
             }
@@ -418,7 +428,13 @@
               }
               found = findInConfig(config, acc.context.serialNumber)
             }
-            config[found.key][found.index].ignoreDevice = true
+            const entry = config[found.key][found.index]
+            const subId = acc.context.subSerialNumber
+            if (subId) {
+              entry.ignoreSubdevices = [...new Set([...subIdsOf(entry), subId])].join(',')
+            } else {
+              entry.ignoreDevice = true
+            }
             await homebridge.updatePluginConfig(blocks)
             setConfigButton(true)
             setHideControl(true)
@@ -427,7 +443,18 @@
             if (found) {
               // Drop the flag rather than storing ignoreDevice false, to keep
               // the entry clean
-              delete config[found.key][found.index].ignoreDevice
+              const entry = config[found.key][found.index]
+              const subId = acc.context.subSerialNumber
+              if (subId) {
+                const rest = subIdsOf(entry).filter(id => id !== subId)
+                if (rest.length > 0) {
+                  entry.ignoreSubdevices = rest.join(',')
+                } else {
+                  delete entry.ignoreSubdevices
+                }
+              } else {
+                delete entry.ignoreDevice
+              }
               await homebridge.updatePluginConfig(blocks)
             }
             setConfigButton(!!found)
@@ -475,7 +502,7 @@
             const nowFound = findInConfig(config, acc.context.serialNumber)
             setConfigButton(!!nowFound)
             if (nowFound) {
-              setHideControl(!!config[nowFound.key][nowFound.index].ignoreDevice)
+              setHideControl(isHiddenIn(config[nowFound.key][nowFound.index], acc))
             }
           }
         } catch (err) {
@@ -607,7 +634,7 @@
           const configBlocks = await getConfigBlocks()
           const configEntry = findInConfig(configBlocks[0], context.serialNumber)
           setConfigButton(!!configEntry)
-          setHideControl(!!(configEntry && configBlocks[0][configEntry.key][configEntry.index].ignoreDevice))
+          setHideControl(!!configEntry && isHiddenIn(configBlocks[0][configEntry.key][configEntry.index], { context }))
           document.getElementById('configActionList').style.display = 'block'
           homebridge.hideSpinner()
         }
