@@ -298,3 +298,10 @@ deviceThermostatMts300
     CurrentTemperature
     TargetHeatingCoolingState  [minValue=0, maxValue=3, validValues=[0,1,2,3]]
     TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
+
+deviceThermostatMts960
+  polls every: 5s
+  service: Thermostat
+    CurrentTemperature
+    TargetHeatingCoolingState  [minValue=0, maxValue=2, validValues=[0,1,2]]
+    TargetTemperature  [minValue=5, maxValue=35, minStep=0.5]
