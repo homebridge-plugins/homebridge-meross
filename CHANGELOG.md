@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - feat: add support for the mss815 in-wall switch (#813)
 - fix(thermostat): give the mts960 its own handler, so it shows its temperature and mode (#809)
 - ci: update github actions to their latest versions (#820)
+- fix: apply a heater or cooler's linked temperature only when it is a number, including zero (#814) (@tbaur)
 
 ## v10.20.1 (2026-10-18)
 
