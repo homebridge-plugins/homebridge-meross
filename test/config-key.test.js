@@ -23,6 +23,11 @@ describe('the config array for each model', () => {
     expect(getDeviceConfigKey('MSH450')).toBe('sensorDevices')
   })
 
+  it('puts the mss815 in-wall switch with the single switches (#813)', () => {
+    expect(getDeviceConfigKey('MSS815')).toBe('singleDevices')
+    expect(platformConsts.matterHardware.MSS815).toContain('9')
+  })
+
   it('has none for a model it does not know', () => {
     expect(getDeviceConfigKey('NOPE1')).toBeNull()
     expect(getDeviceConfigKey(undefined)).toBeNull()
