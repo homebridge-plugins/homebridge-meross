@@ -15,6 +15,24 @@
 
 export const payloads = {
   /**
+   * Meross MTS960 plug-in thermostat, namespace Appliance.Control.Thermostat.ModeB.
+   *
+   * Issue #809 asked for it, but these two were recorded from a separate real
+   * MTS960 (EU, hardware 4.0.0, firmware 4.2.6) - swap in the reporter's own
+   * when they send one. Temperatures are hundredths of a degree. `onoff` is
+   * 1 on and 2 off, `working` 1 heat and 2 cool, and `state` is the relay, 1
+   * while it is powering the heater or cooler. A schedule (mode 2) carries its
+   * current setpoint; a timer (mode 3) carries a target of 0.
+   */
+  mts960ScheduleHeating: {
+    issue: 809,
+    payload: { modeB: [{ channel: 0, mode: 2, targetTemp: 1800, working: 1, currentTemp: 1723, state: 1, onoff: 1, sensorStatus: 1 }] },
+  },
+  mts960TimerCoolingIdle: {
+    issue: 809,
+    payload: { modeB: [{ mode: 3, targetTemp: 0, working: 2, currentTemp: 1936, state: 2, onoff: 1, sensorStatus: 1, channel: 0 }] },
+  },
+  /**
    * Meross MS600 presence sensor, namespace Appliance.Control.Sensor.LatestX.
    *
    * Issue #582. It reports a light level in lux and a presence value, either on
