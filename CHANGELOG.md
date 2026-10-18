@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.20.2 (Pending Release)
+
+### Changed
+
+- fix: apply a heater or cooler's linked temperature only when it is a number, including zero (#814)
+
 ## v10.20.1 (2026-10-18)
 
 ### Changed
