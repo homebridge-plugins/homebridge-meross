@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - fix: apply a heater or cooler's linked temperature only when it is a number, including zero (#814)
+- fix: ignore a device address that is a pasted url or carries credentials, instead of building the local request from it (#814)
 
 ## v10.20.1 (2026-10-18)
 
