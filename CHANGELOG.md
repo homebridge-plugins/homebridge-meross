@@ -9,6 +9,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(ui): let a hub's sensors be hidden one by one from the my devices tab (#816)
 - feat: add support for the mss815 in-wall switch (#813)
 - fix(thermostat): give the mts960 its own handler, so it shows its temperature and mode (#809)
+- ci: update github actions to their latest versions
 
 ## v10.20.1 (2026-10-18)
 
