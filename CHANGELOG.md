@@ -15,6 +15,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: stop a local device request from following a redirect (#814) (@tbaur)
 - fix: give Meross cloud requests a timeout, and wait longer between retries during an outage (#815) (@tbaur)
 - fix: keep a local device in homekit when its address is ignored, so its room and automations stay
+- test: check the cloud request timeout against 30 seconds, so the test fails without it
 
 ## v10.20.1 (2026-10-18)
 
