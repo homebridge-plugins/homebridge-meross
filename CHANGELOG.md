@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: ignore a device address that is a pasted url or has credentials, instead of using it (#814) (@tbaur)
 - fix: stop a local device request from following a redirect (#814) (@tbaur)
 - fix: give Meross cloud requests a timeout, and wait longer between retries during an outage (#815) (@tbaur)
+- fix: keep a local device in homekit when its address is ignored, so its room and automations stay
 
 ## v10.20.1 (2026-10-18)
 
