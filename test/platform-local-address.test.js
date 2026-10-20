@@ -82,8 +82,13 @@ async function startWithCachedAccessory(deviceUrl, storagePath) {
   const platform = new Platform(log, makeConfig(deviceUrl), api)
 
   // The accessory Homebridge restores from its cache, from when the address worked
-  const cached = new FakeAccessory('Lamp', `uuid-${SERIAL}`)
-  Object.assign(cached.context, { connection: 'local', serialNumber: SERIAL, model: 'MSS110' })
+  // Shaped like a HAP accessory, whose services hold an array of characteristics
+  const cached = {
+    UUID: `uuid-${SERIAL}`,
+    displayName: 'Lamp',
+    context: { connection: 'local', serialNumber: SERIAL, model: 'MSS110' },
+    services: [],
+  }
   platform.configureAccessory(cached)
 
   await platform.pluginSetup()

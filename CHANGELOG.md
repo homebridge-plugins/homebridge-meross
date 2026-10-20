@@ -17,6 +17,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: keep a local device in homekit when its address is ignored, so its room and automations stay
 - test: check the cloud request timeout against 30 seconds, so the test fails without it
 - fix: keep retrying the meross cloud while the network is unreachable or refuses the connection
+- fix: show the power in use with decimals, instead of rounding it to a whole watt
 
 ## v10.20.1 (2026-10-18)
 
