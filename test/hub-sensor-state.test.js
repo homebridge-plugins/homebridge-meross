@@ -99,3 +99,61 @@ describe('a hub door and window sensor (MS200)', () => {
     expect(charValue(built.subAcc, 'ContactSensor', 'ContactSensorState')).toBe(0)
   })
 })
+
+describe('a hub smoke alarm (GS559A, MA151)', () => {
+  let built
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    built?.cleanup()
+    vi.useRealTimers()
+  })
+
+  it('reads all clear from the hub status', async () => {
+    built = hubWith('deviceHubSmoke', '0301', digestWith({
+      id: '0301',
+      status: 1,
+      smokeAlarm: { status: 170, interConn: 0 },
+    }))
+    await built.hub.requestUpdate()
+    expect(charValue(built.subAcc, 'SmokeSensor', 'SmokeDetected')).toBe(0)
+    expect(charValue(built.subAcc, 'SmokeSensor', 'StatusFault')).toBe(0)
+    expect(built.subAcc.getService('SmokeSensor').isPrimary).toBe(true)
+  })
+
+  it.each([
+    ['smoke', 25],
+    ['muted smoke', 27],
+    ['heat', 24],
+    ['a test press', 23],
+  ])('shows smoke detected for %s (%s)', (_label, status) => {
+    built = hubWith('deviceHubSmoke', '0301')
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status, interConn: 0 }))
+    expect(charValue(built.subAcc, 'SmokeSensor', 'SmokeDetected')).toBe(1)
+  })
+
+  it('clears once the alarm is over', () => {
+    built = hubWith('deviceHubSmoke', '0301')
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status: 25, interConn: 0 }))
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status: 170, interConn: 0 }))
+    expect(charValue(built.subAcc, 'SmokeSensor', 'SmokeDetected')).toBe(0)
+  })
+
+  it('shows a fault, not smoke, when the sensor reports a problem', () => {
+    built = hubWith('deviceHubSmoke', '0301')
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status: 19, interConn: 0 }))
+    expect(charValue(built.subAcc, 'SmokeSensor', 'SmokeDetected')).toBe(0)
+    expect(charValue(built.subAcc, 'SmokeSensor', 'StatusFault')).toBe(1)
+  })
+
+  it('leaves the state alone for a code it does not know', () => {
+    built = hubWith('deviceHubSmoke', '0301')
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status: 25, interConn: 0 }))
+    built.hub.receiveUpdate(pushOf('smokeAlarm', { id: '0301', status: 99, interConn: 0 }))
+    expect(charValue(built.subAcc, 'SmokeSensor', 'SmokeDetected')).toBe(1)
+    expect(built.subAcc.logWarn.messages().join()).toContain('99')
+  })
+})
