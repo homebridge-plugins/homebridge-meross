@@ -19,6 +19,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix: keep retrying the meross cloud while the network is unreachable or refuses the connection
 - fix: show the power in use with decimals, instead of rounding it to a whole watt
 - fix(lights): keep adaptive lighting on after a restart when it ran while the light was off
+- fix(hub): show whether an ms200 door or window sensor is open or closed
 
 ## v10.20.1 (2026-10-18)
 
