@@ -242,3 +242,30 @@ describe('a hub sensor\'s battery', () => {
     expect(built.subAcc.logWarn.calls).toEqual([])
   })
 })
+
+describe('a hub MS100 temperature and humidity sensor', () => {
+  let built
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    built?.cleanup()
+    vi.useRealTimers()
+  })
+
+  // Without this, a reading only changed on the next poll, five minutes apart
+  // by default on a cloud connection
+  it('follows a pushed reading', () => {
+    built = hubWith('deviceHubSensor', '0601')
+    built.hub.receiveUpdate(pushOf('tempHum', {
+      id: '0601',
+      latestTemperature: 187,
+      latestHumidity: 642,
+      latestTime: 1700000000,
+    }))
+    expect(charValue(built.subAcc, 'TemperatureSensor', 'CurrentTemperature')).toBe(18.7)
+    expect(charValue(built.subAcc, 'HumiditySensor', 'CurrentRelativeHumidity')).toBe(64)
+  })
+})
