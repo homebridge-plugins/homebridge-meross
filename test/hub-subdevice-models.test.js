@@ -70,9 +70,10 @@ describe('hub sub-device models', () => {
 
 /**
  * Recognising a model only gets an accessory built. It also has to receive the
- * hub's readings, and those arrive wrapped in an object named after the model —
- * `ms100` on an MS100, `ms130` on an MS130. Keying on one name is what left the
- * MS130 with an accessory and no data (#803).
+ * hub's readings, and those can arrive wrapped in an object named after the
+ * model, like `ms100` on an MS100. Keying on one name would miss a new model
+ * that uses the same fields. (The MS130 uses `tempHumi` instead, which is
+ * tested in hub-sensor-state.test.js.)
  */
 describe('finding a sub-device\'s readings in the hub digest', () => {
   it('finds them under the MS100 key', () => {
@@ -86,9 +87,9 @@ describe('finding a sub-device\'s readings in the hub digest', () => {
   it('finds them under a model key it has never seen', () => {
     const subdevice = {
       id: '02',
-      ms130: { latestTemperature: 197, latestHumidity: 501, voltage: 2750 },
+      ms999: { latestTemperature: 197, latestHumidity: 501, voltage: 2750 },
     }
-    expect(readingsFrom(subdevice)).toEqual(subdevice.ms130)
+    expect(readingsFrom(subdevice)).toEqual(subdevice.ms999)
   })
 
   it('ignores a sub-device that reports no readings', () => {
