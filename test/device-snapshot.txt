@@ -125,6 +125,8 @@ deviceHeaterSingle
 deviceHubContact
   service: Battery
     BatteryLevel
+  service: ContactSensor *primary
+    ContactSensorState
 
 deviceHubLeak
   service: LeakSensor
