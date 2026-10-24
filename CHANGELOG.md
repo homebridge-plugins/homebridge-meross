@@ -25,6 +25,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(hub): show the ms130 sensor's temperature and humidity, which it names differently (#803)
 - fix(hub): show a hub sensor's battery level as the hub reports it
 - feat: add support for the ms405 water leak sensor
+- fix(hub): show an ms100 sensor's new reading when the hub sends it, not at the next poll
 
 ## v10.20.1 (2026-10-18)
 
