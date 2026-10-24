@@ -157,3 +157,50 @@ describe('a hub smoke alarm (GS559A, MA151)', () => {
     expect(built.subAcc.logWarn.messages().join()).toContain('99')
   })
 })
+
+describe('a hub MS130 temperature and humidity sensor', () => {
+  let built
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    built?.cleanup()
+    vi.useRealTimers()
+  })
+
+  // The MS130 sends hundredths of a degree and tenths of a percent
+  it('reads its temperature and humidity from the hub status', async () => {
+    built = hubWith('deviceHubSensor', '0401', digestWith({
+      id: '0401',
+      status: 1,
+      onoff: 1,
+      tempHumi: { latestTime: 1700000000, temp: 2148, humi: 563 },
+    }))
+    await built.hub.requestUpdate()
+    expect(charValue(built.subAcc, 'TemperatureSensor', 'CurrentTemperature')).toBe(21.5)
+    expect(charValue(built.subAcc, 'HumiditySensor', 'CurrentRelativeHumidity')).toBe(56)
+  })
+
+  it('follows a pushed reading', () => {
+    built = hubWith('deviceHubSensor', '0401')
+    built.hub.receiveUpdate(pushOf('latest', {
+      subId: '0401',
+      channel: 0,
+      data: {
+        temp: [
+          { value: 1932, timestamp: 1700000000 },
+        ],
+        humi: [
+          { value: 618, timestamp: 1700000000 },
+        ],
+        light: [
+          { value: 120, timestamp: 1700000000 },
+        ],
+      },
+    }))
+    expect(charValue(built.subAcc, 'TemperatureSensor', 'CurrentTemperature')).toBe(19.3)
+    expect(charValue(built.subAcc, 'HumiditySensor', 'CurrentRelativeHumidity')).toBe(62)
+  })
+})
