@@ -147,6 +147,9 @@ deviceHubSensor
 deviceHubSmoke
   service: Battery
     BatteryLevel
+  service: SmokeSensor *primary
+    SmokeDetected
+    StatusFault
 
 deviceHubSprinkler
   service: Battery

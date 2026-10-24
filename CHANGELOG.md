@@ -21,6 +21,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore(deps): dependency updates
 - fix(lights): keep adaptive lighting on after a restart when it ran while the light was off
 - fix(hub): show whether an ms200 door or window sensor is open or closed
+- fix(hub): show smoke, heat and test alarms from the gs559a and ma151 smoke alarms (#803)
 
 ## v10.20.1 (2026-10-18)
 
