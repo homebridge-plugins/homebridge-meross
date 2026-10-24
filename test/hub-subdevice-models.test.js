@@ -31,6 +31,16 @@ function dispatchedModels() {
   ].map(m => m[1])
 }
 
+// The handler each `case 'XXX':` label builds, read from the group it sits in
+function handlerFor(model) {
+  const start = platformSource.indexOf('switch (subdeviceObj.model)')
+  const end = platformSource.indexOf('\n            }', start)
+  const group = platformSource.slice(start, end)
+    .split('break')
+    .find(chunk => chunk.includes(`case '${model}':`))
+  return group?.match(/deviceTypes\.(\w+)/)?.[1]
+}
+
 /**
  * Models declared supported but with no case in the dispatch switch.
  *
@@ -58,6 +68,12 @@ describe('hub sub-device models', () => {
   it('includes the MA151 that pairs with the MSH450 hub (#803)', () => {
     expect(platformConsts.models.hubSub).toContain('MA151')
     expect(dispatchedModels()).toContain('MA151')
+  })
+
+  it('builds the MS405 as a leak sensor, the same as the MS400', () => {
+    expect(platformConsts.models.hubSub).toContain('MS405')
+    expect(handlerFor('MS405')).toBe('deviceHubLeak')
+    expect(handlerFor('MS400')).toBe('deviceHubLeak')
   })
 
   it('dispatches the MS130 temperature sensors (#803)', () => {
