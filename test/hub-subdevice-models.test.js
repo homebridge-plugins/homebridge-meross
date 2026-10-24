@@ -26,7 +26,9 @@ function dispatchedModels() {
   expect(start).toBeGreaterThan(-1)
   const end = platformSource.indexOf('\n            }', start)
   const block = platformSource.slice(start, end)
-  return [...block.matchAll(/case '([^']+)':/g)].map(m => m[1])
+  return [
+    ...block.matchAll(/case '([^']+)':/g),
+  ].map(m => m[1])
 }
 
 /**
@@ -74,18 +76,27 @@ describe('hub sub-device models', () => {
  */
 describe('finding a sub-device\'s readings in the hub digest', () => {
   it('finds them under the MS100 key', () => {
-    const subdevice = { id: '01', ms100: { latestTemperature: 213, latestHumidity: 455, voltage: 2800 } }
+    const subdevice = {
+      id: '01',
+      ms100: { latestTemperature: 213, latestHumidity: 455, voltage: 2800 },
+    }
     expect(readingsFrom(subdevice)).toEqual(subdevice.ms100)
   })
 
   it('finds them under a model key it has never seen', () => {
-    const subdevice = { id: '02', ms130: { latestTemperature: 197, latestHumidity: 501, voltage: 2750 } }
+    const subdevice = {
+      id: '02',
+      ms130: { latestTemperature: 197, latestHumidity: 501, voltage: 2750 },
+    }
     expect(readingsFrom(subdevice)).toEqual(subdevice.ms130)
   })
 
   it('ignores a sub-device that reports no readings', () => {
     expect(readingsFrom({ id: '03', status: 2 })).toBeUndefined()
-    expect(readingsFrom({ id: '04', mst: { onoff: 1, voltage: 2900 } })).toBeUndefined()
+    expect(readingsFrom({
+      id: '04',
+      mst: { onoff: 1, voltage: 2900 },
+    })).toBeUndefined()
     expect(readingsFrom(undefined)).toBeUndefined()
   })
 })

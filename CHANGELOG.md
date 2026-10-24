@@ -18,6 +18,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - test: check the cloud request timeout against 30 seconds, so the test fails without it
 - fix: keep retrying the meross cloud while the network is unreachable or refuses the connection
 - fix: show the power in use with decimals, instead of rounding it to a whole watt
+- chore(deps): dependency updates
 
 ## v10.20.1 (2026-10-18)
 

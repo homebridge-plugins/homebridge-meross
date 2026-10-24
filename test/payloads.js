@@ -26,11 +26,37 @@ export const payloads = {
    */
   mts960ScheduleHeating: {
     issue: 809,
-    payload: { modeB: [{ channel: 0, mode: 2, targetTemp: 1800, working: 1, currentTemp: 1723, state: 1, onoff: 1, sensorStatus: 1 }] },
+    payload: {
+      modeB: [
+        {
+          channel: 0,
+          mode: 2,
+          targetTemp: 1800,
+          working: 1,
+          currentTemp: 1723,
+          state: 1,
+          onoff: 1,
+          sensorStatus: 1,
+        },
+      ],
+    },
   },
   mts960TimerCoolingIdle: {
     issue: 809,
-    payload: { modeB: [{ mode: 3, targetTemp: 0, working: 2, currentTemp: 1936, state: 2, onoff: 1, sensorStatus: 1, channel: 0 }] },
+    payload: {
+      modeB: [
+        {
+          mode: 3,
+          targetTemp: 0,
+          working: 2,
+          currentTemp: 1936,
+          state: 2,
+          onoff: 1,
+          sensorStatus: 1,
+          channel: 0,
+        },
+      ],
+    },
   },
   /**
    * Meross MS600 presence sensor, namespace Appliance.Control.Sensor.LatestX.
@@ -40,31 +66,75 @@ export const payloads = {
    */
   ms600Lux: {
     issue: 582,
-    payload: { latest: [{ channel: 0, data: { light: [{ timestamp: 1721487553, value: 181 }] } }] },
+    payload: {
+      latest: [
+        {
+          channel: 0,
+          data: {
+            light: [
+              { timestamp: 1721487553, value: 181 },
+            ],
+          },
+        },
+      ],
+    },
   },
   ms600LuxDark: {
     issue: 582,
     // The same shape with the light reading at zero, which is what a sensor in
     // a dark room sends
-    payload: { latest: [{ channel: 0, data: { light: [{ timestamp: 1721487553, value: 0 }] } }] },
+    payload: {
+      latest: [
+        {
+          channel: 0,
+          data: {
+            light: [
+              { timestamp: 1721487553, value: 0 },
+            ],
+          },
+        },
+      ],
+    },
   },
   /** presence value 2 is 'presence', 1 is 'absence' - see value2Label */
   ms600Presence: {
     issue: 582,
     payload: {
-      latest: [{
-        channel: 0,
-        data: { presence: [{ distance: 3060, times: 951, timestamp: 1721487660, value: 2 }] },
-      }],
+      latest: [
+        {
+          channel: 0,
+          data: {
+            presence: [
+              {
+                distance: 3060,
+                times: 951,
+                timestamp: 1721487660,
+                value: 2,
+              },
+            ],
+          },
+        },
+      ],
     },
   },
   ms600Absence: {
     issue: 582,
     payload: {
-      latest: [{
-        channel: 0,
-        data: { presence: [{ distance: 3060, times: 0, timestamp: 1721505618, value: 1 }] },
-      }],
+      latest: [
+        {
+          channel: 0,
+          data: {
+            presence: [
+              {
+                distance: 3060,
+                times: 0,
+                timestamp: 1721505618,
+                value: 1,
+              },
+            ],
+          },
+        },
+      ],
     },
   },
 }

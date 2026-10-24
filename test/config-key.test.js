@@ -13,7 +13,9 @@ describe('the config array for each model', () => {
   // Sensors on a hub use their hub's entry, and the template list is empty
   const topLevel = Object.entries(platformConsts.models)
     .filter(([list]) => !['hubSub', 'template'].includes(list))
-    .flatMap(([list, models]) => (Array.isArray(models) ? models : Object.keys(models)).map(model => [list, model]))
+    .flatMap(([list, models]) => (Array.isArray(models)
+      ? models
+      : Object.keys(models)).map(model => [list, model]))
 
   it.each(topLevel)('has one for every %s model (%s)', (_list, model) => {
     expect(getDeviceConfigKey(model)).not.toBeNull()
