@@ -23,6 +23,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(hub): show whether an ms200 door or window sensor is open or closed
 - fix(hub): show smoke, heat and test alarms from the gs559a and ma151 smoke alarms (#803)
 - fix(hub): show the ms130 sensor's temperature and humidity, which it names differently (#803)
+- fix(hub): show a hub sensor's battery level as the hub reports it
 
 ## v10.20.1 (2026-10-18)
 
