@@ -211,6 +211,11 @@ export function makePlatform(overrides = {}) {
             this.options = options
           }
         },
+        // The rgb light sets hue and saturation to match a colour temperature
+        // it sends. The real conversion is HAP's, and no test here checks it
+        ColorUtils: {
+          colorTemperatureToHueAndSaturation: () => ({ hue: 0, saturation: 0 }),
+        },
       },
       platformAccessory: FakeAccessory,
       updatePlatformAccessories: () => {},
