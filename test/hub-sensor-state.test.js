@@ -204,3 +204,41 @@ describe('a hub MS130 temperature and humidity sensor', () => {
     expect(charValue(built.subAcc, 'HumiditySensor', 'CurrentRelativeHumidity')).toBe(62)
   })
 })
+
+describe('a hub sensor\'s battery', () => {
+  let built
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    built?.cleanup()
+    vi.useRealTimers()
+  })
+
+  // These sensors report no voltage, so the hub's own figure is all there is
+  it.each([
+    ['deviceHubContact'],
+    ['deviceHubSmoke'],
+    ['deviceHubSensor'],
+  ])('takes the percentage the hub pushes for %s', (handler) => {
+    built = hubWith(handler, '0501')
+    built.hub.receiveUpdate(pushOf('battery', { id: '0501', value: 15 }))
+    expect(charValue(built.subAcc, 'Battery', 'BatteryLevel')).toBe(15)
+    expect(charValue(built.subAcc, 'Battery', 'StatusLowBattery')).toBe(1)
+  })
+
+  it('keeps the hub\'s figure over the estimate from a later voltage reading', () => {
+    built = hubWith('deviceHubSensor', '0501')
+    built.hub.receiveUpdate(pushOf('battery', { id: '0501', value: 80 }))
+    built.subAcc.control.applyUpdate({ voltage: 2500 })
+    expect(charValue(built.subAcc, 'Battery', 'BatteryLevel')).toBe(80)
+  })
+
+  it('does not pass a battery reading to a sensor with no battery tile', () => {
+    built = hubWith('deviceHubLeak', '0501')
+    built.hub.receiveUpdate(pushOf('battery', { id: '0501', value: 80 }))
+    expect(built.subAcc.logWarn.calls).toEqual([])
+  })
+})
