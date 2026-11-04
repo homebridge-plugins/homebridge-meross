@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.20.2 (Pending Release)
+
+### Changed
+
+- fix(thermostat): use onoff for the MTS215 target state and state for the current one
+
 ## v10.20.1 (2026-10-18)
 
 ### Changed
