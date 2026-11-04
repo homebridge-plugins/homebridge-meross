@@ -162,3 +162,64 @@ describe('the mts960 plug-in thermostat, on payloads from a real device', () => 
     cleanup()
   })
 })
+
+/**
+ * On the MTS215 `onoff` is whether the thermostat is switched on and `state` is
+ * the relay. With a boiler the relay opens once the target is reached and only
+ * closes again after the device's hysteresis, and in between Home showed the
+ * thermostat as off although it was still on and about to heat again (#824).
+ */
+describe('the mts215 thermostat, between heating cycles', () => {
+  const Handler = deviceTypes.deviceThermostatMts215
+  const name = 'deviceThermostatMts215'
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  // The harness has no HAP enum values, so these read what the handler holds:
+  // cacheState is the target (switched on or off), cacheWorking the relay
+  it('stays on, and idle, while the relay is open between cycles', () => {
+    const built = buildHandler(name, Handler)
+    expect(built.error).toBeUndefined()
+    const { device, cleanup } = built
+
+    device.applyUpdate({
+      mode: [
+        { channel: 0, onoff: 1, state: 1 },
+      ],
+    })
+    expect([device.cacheState, device.cacheWorking]).toEqual([1, 1])
+
+    // The target is reached, so the relay opens, but the thermostat is still on
+    device.applyUpdate({
+      mode: [
+        { channel: 0, onoff: 1, state: 0 },
+      ],
+    })
+    expect([device.cacheState, device.cacheWorking]).toEqual([1, 0])
+    cleanup()
+  })
+
+  it('shows off when the thermostat is switched off', () => {
+    const { device, cleanup } = buildHandler(name, Handler)
+
+    device.applyUpdate({
+      mode: [
+        { channel: 0, onoff: 1, state: 1 },
+      ],
+    })
+    device.applyUpdate({
+      mode: [
+        { channel: 0, onoff: 0, state: 0 },
+      ],
+    })
+
+    expect([device.cacheState, device.cacheWorking]).toEqual([0, 0])
+    cleanup()
+  })
+})
