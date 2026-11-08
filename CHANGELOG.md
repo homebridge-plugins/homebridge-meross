@@ -26,6 +26,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - feat: add support for the ms405 water leak sensor
 - fix(hub): show an ms100 sensor's new reading when the hub sends it, not at the next poll
 - fix(thermostat): use onoff for the MTS215 target state and state for the current one (@marcaicart)
+- chore: leave CLAUDE.md out of the published package
 
 ## v10.20.1 (2026-10-18)
 
