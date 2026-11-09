@@ -941,6 +941,14 @@
               "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && model.fanDevices[arrayIndices].serialNumber && model.fanDevices[arrayIndices].serialNumber.length === 32);"
             }
           },
+          "hideLight": {
+            "type": "boolean",
+            "title": "Hide Light From HomeKit",
+            "description": "If true, the light service for this fan controller will be removed from HomeKit while keeping the fan service available.",
+            "condition": {
+              "functionBody": "return (model.fanDevices && model.fanDevices[arrayIndices] && model.fanDevices[arrayIndices].serialNumber && model.fanDevices[arrayIndices].serialNumber.length === 32 && !model.fanDevices[arrayIndices].ignoreDevice);"
+            }
+          },
           "model": {
             "title": "Model",
             "description": "The model of this device.",
@@ -1942,6 +1950,7 @@
             "fanDevices[].connection",
             "fanDevices[].deviceUrl",
             "fanDevices[].ignoreDevice",
+            "fanDevices[].hideLight",
             "fanDevices[].model",
             "fanDevices[].firmwareRevision",
             "fanDevices[].userkey"
