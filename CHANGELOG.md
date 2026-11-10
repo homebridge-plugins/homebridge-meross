@@ -28,6 +28,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(thermostat): use onoff for the MTS215 target state and state for the current one (@marcaicart)
 - chore: leave CLAUDE.md out of the published package
 - feat(fan): add an option to hide a fan's light from homekit (#827) (@aquilesr23)
+- feat(logging): name a device in the log by its configured name (#829) (@aquilesr23)
 
 ## v10.20.1 (2026-10-18)
 
