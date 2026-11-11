@@ -14,12 +14,16 @@ import { FakeAccessory } from './harness.js'
  * and the user lost its room and automations in HomeKit.
  */
 
-vi.mock('axios', () => ({ default: vi.fn() }))
+vi.mock('axios', () => ({
+  default: vi.fn(),
+}))
 
 // These build real HAP classes, which a plain object api cannot provide
 vi.mock('../lib/utils/custom-chars.js', () => ({ default: class {} }))
 vi.mock('../lib/utils/eve-chars.js', () => ({ default: class {} }))
-vi.mock('../lib/fakegato/fakegato-history.js', () => ({ default: () => class {} }))
+vi.mock('../lib/fakegato/fakegato-history.js', () => ({
+  default: () => class {},
+}))
 
 // Every device handler is replaced by one that only records it was built
 vi.mock('../lib/device/index.js', () => {
@@ -28,7 +32,11 @@ vi.mock('../lib/device/index.js', () => {
       this.accessory = accessory
     }
   }
-  return { default: new Proxy({}, { get: () => FakeHandler }) }
+  return {
+    default: new Proxy({}, {
+      get: () => FakeHandler,
+    }),
+  }
 })
 
 const axios = (await import('axios')).default
@@ -37,7 +45,11 @@ const Platform = (await import('../lib/platform.js')).default
 const SERIAL = '2104000000000000000000000000abcd'
 
 function nameProxy() {
-  return new Proxy({}, { get: (_target, prop) => (typeof prop === 'string' ? prop : undefined) })
+  return new Proxy({}, {
+    get: (_target, prop) => (typeof prop === 'string'
+      ? prop
+      : undefined),
+  })
 }
 
 function makeLog() {
@@ -53,12 +65,16 @@ function makeApi(storagePath) {
     versionGreaterOrEqual: () => true,
     serverVersion: '2.0.0',
     on: vi.fn(),
-    user: { storagePath: () => storagePath },
+    user: {
+      storagePath: () => storagePath,
+    },
     hap: {
       HAPLibraryVersion: () => '1.0.0',
       Service: nameProxy(),
       Characteristic: nameProxy(),
-      uuid: { generate: input => `uuid-${input}` },
+      uuid: {
+        generate: input => `uuid-${input}`,
+      },
     },
     platformAccessory: FakeAccessory,
     registerPlatformAccessories: vi.fn(),
@@ -72,7 +88,14 @@ function makeConfig(deviceUrl) {
   return {
     platform: 'Meross',
     userkey: '0123456789abcdef0123456789abcdef',
-    singleDevices: [{ serialNumber: SERIAL, name: 'Lamp', model: 'MSS110', deviceUrl }],
+    singleDevices: [
+      {
+        serialNumber: SERIAL,
+        name: 'Lamp',
+        model: 'MSS110',
+        deviceUrl,
+      },
+    ],
   }
 }
 
