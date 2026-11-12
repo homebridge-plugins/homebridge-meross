@@ -15,9 +15,18 @@ import { makeAccessory, makePlatform } from './harness.js'
  * ordinary single-channel local switch.
  */
 export const CONTEXT_FOR = {
-  deviceOutletMulti: { channel: 1, options: { hideChannels: '' } },
-  deviceSwitchMulti: { channel: 1, options: { hideChannels: '' } },
-  devicePowerStrip: { channel: 1, options: { hideChannels: '' } },
+  deviceOutletMulti: {
+    channel: 1,
+    options: { hideChannels: '' },
+  },
+  deviceSwitchMulti: {
+    channel: 1,
+    options: { hideChannels: '' },
+  },
+  devicePowerStrip: {
+    channel: 1,
+    options: { hideChannels: '' },
+  },
   deviceGarageSub: { channel: 1 },
   deviceHubSensor: { subdeviceId: '0100' },
   deviceHubContact: { subdeviceId: '0100' },
@@ -35,7 +44,9 @@ export const CONTEXT_FOR = {
  * something the harness can stand in for.
  */
 export const EXTRA_ARGS_FOR = {
-  deviceBaby: () => [makeAccessory('Baby Monitor Light')],
+  deviceBaby: () => [
+    makeAccessory('Baby Monitor Light'),
+  ],
 }
 
 /**
@@ -60,14 +71,27 @@ export function everyHandler() {
  */
 export function buildHandler(name, Handler, platformOverrides = {}, contextOverrides = {}) {
   const platform = makePlatform(platformOverrides)
-  const accessory = makeAccessory(name, { ...(CONTEXT_FOR[name] ?? {}), ...contextOverrides })
+  const accessory = makeAccessory(name, {
+    ...(CONTEXT_FOR[name] ?? {}),
+    ...contextOverrides,
+  })
 
   const extra = EXTRA_ARGS_FOR[name]?.(platform, accessory) ?? []
 
   try {
     const device = new Handler(platform, accessory, ...extra)
-    return { device, platform, accessory, cleanup: () => clearInterval(accessory.refreshInterval) }
+    return {
+      device,
+      platform,
+      accessory,
+      cleanup: () => clearInterval(accessory.refreshInterval),
+    }
   } catch (err) {
-    return { error: err.message, platform, accessory, cleanup: () => clearInterval(accessory.refreshInterval) }
+    return {
+      error: err.message,
+      platform,
+      accessory,
+      cleanup: () => clearInterval(accessory.refreshInterval),
+    }
   }
 }
