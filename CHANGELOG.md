@@ -29,6 +29,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: leave CLAUDE.md out of the published package
 - feat(fan): add an option to hide a fan's light from homekit (#827) (@aquilesr23)
 - feat(logging): name a device in the log by its configured name (#829) (@aquilesr23)
+- fix(fan): set the speed steps from the fan's own top speed, so 3-speed fans reach 100% (#828) (@aquilesr23)
 
 ## v10.20.1 (2026-10-18)
 
