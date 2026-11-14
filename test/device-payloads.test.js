@@ -155,8 +155,18 @@ describe('the mts960 plug-in thermostat, on payloads from a real device', () => 
     const sent = platform.sent.map(s => s.toSend).filter(s => s.namespace !== 'Appliance.System.All')
     expect(sent.every(s => s.namespace === 'Appliance.Control.Thermostat.ModeB')).toBe(true)
     expect(sent.map(s => s.payload.modeB[0])).toEqual([
-      { channel: 0, onoff: 1, mode: 1, working: 1 },
-      { channel: 0, mode: 1, working: 1, targetTemp: 2150 },
+      {
+        channel: 0,
+        onoff: 1,
+        mode: 1,
+        working: 1,
+      },
+      {
+        channel: 0,
+        mode: 1,
+        working: 1,
+        targetTemp: 2150,
+      },
       { channel: 0, onoff: 2 },
     ])
     cleanup()

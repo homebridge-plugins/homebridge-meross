@@ -9,7 +9,13 @@ import EveChars, { currentConsumptionUUID } from '../lib/utils/eve-chars.js'
  * props it was saved with, so existing accessories are converted on restore.
  */
 
-const Formats = { FLOAT: 'float', UINT16: 'uint16', UINT32: 'uint32', UINT8: 'uint8', BOOL: 'bool' }
+const Formats = {
+  FLOAT: 'float',
+  UINT16: 'uint16',
+  UINT32: 'uint32',
+  UINT8: 'uint8',
+  BOOL: 'bool',
+}
 const Perms = { PAIRED_READ: 'pr', PAIRED_WRITE: 'pw', NOTIFY: 'ev' }
 
 // Just enough of a HAP characteristic: a UUID and props that setProps merges into
@@ -35,7 +41,12 @@ function makeApi() {
     versionGreaterOrEqual: () => true,
     serverVersion: '2.0.0',
     on: vi.fn(),
-    hap: { HAPLibraryVersion: () => '1.0.0', Characteristic: FakeCharacteristic, Formats, Perms },
+    hap: {
+      HAPLibraryVersion: () => '1.0.0',
+      Characteristic: FakeCharacteristic,
+      Formats,
+      Perms,
+    },
   }
 }
 
@@ -82,7 +93,11 @@ describe('eve current consumption', () => {
       UUID: 'uuid-outlet',
       displayName: 'Outlet',
       context: {},
-      services: [{ characteristics: [other, consumption] }],
+      services: [
+        {
+          characteristics: [other, consumption],
+        },
+      ],
     }
 
     platform.configureAccessory(accessory)

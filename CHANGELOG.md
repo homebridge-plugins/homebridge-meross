@@ -31,6 +31,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - feat(logging): name a device in the log by its configured name (#829) (@aquilesr23)
 - fix(fan): set the speed steps from the fan's own top speed, so 3-speed fans reach 100% (#828) (@aquilesr23)
 - ci: publish releases with node.js v26, the current lts
+- chore(deps): dependency updates
 
 ## v10.20.1 (2026-10-18)
 
