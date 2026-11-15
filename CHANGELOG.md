@@ -2,6 +2,12 @@
 
 All notable changes to `@homebridge-plugins/homebridge-meross` will be documented in this file.
 
+## v10.21.1 (Pending Release)
+
+### Changed
+
+- fix(fan): preserve safe MFC100 power and speed transitions (#830) (@aquilesr23)
+
 ## v10.21.0 (2026-11-14)
 
 ### Changed

@@ -211,19 +211,28 @@ it('retains power-off state when a remembered nonzero speed is reported', () => 
   assert.equal(platform.sendUpdate.mock.calls.length, 0)
 })
 
-it('preserves the existing slider-off command and remembered speed', async () => {
+it('uses ToggleX to turn off from the slider and remembers the speed', async () => {
   const { fan, report, setSpeed, platform, rotation } = fixture()
   report({ maxSpeed: 3, speed: 2, onoff: 1 })
   await setSpeed(0)
-  assert.equal(platform.sendUpdate.mock.calls[0][1].payload.fan[0].speed, 0)
+  assert.deepEqual(platform.sendUpdate.mock.calls[0][1], {
+    namespace: 'Appliance.Control.ToggleX',
+    payload: {
+      togglex: { onoff: 0, channel: 2 },
+    },
+  })
+  assert.equal(platform.sendUpdate.mock.calls.length, 1)
+  assert.equal(fan.cacheFanState, false)
+  assert.equal(fan.fanService.getCharacteristic('On').value, false)
   assert.equal(fan.cacheFanSpeed, 2)
+  rotation.value = 0
   await vi.advanceTimersByTimeAsync(2000)
   assert.equal(rotation.value, 200 / 3)
 })
 
 it('does not send a redundant command at the current speed', async () => {
   const { report, setSpeed, platform } = fixture()
-  report({ maxSpeed: 3, speed: 2 })
+  report({ maxSpeed: 3, speed: 2, onoff: 1 })
   await setSpeed(66)
   assert.equal(platform.sendUpdate.mock.calls.length, 0)
 })
@@ -268,4 +277,107 @@ it('learns maxSpeed from the initial System.All poll', async () => {
   await fan.requestUpdate(true)
   assert.equal(rotation.props.validValues, null)
   assert.equal(rotation.value, 100)
+})
+
+it.each([3, 4])('sends an equal cached speed while off for maxSpeed=%i', async (maximum) => {
+  const { fan, report, setSpeed, platform } = fixture()
+  report({ maxSpeed: maximum, speed: 2, onoff: 0 })
+  await setSpeed(200 / maximum)
+  assert.equal(platform.sendUpdate.mock.calls.length, 1)
+  assert.deepEqual(platform.sendUpdate.mock.calls[0][1], {
+    namespace: 'Appliance.Control.Fan',
+    payload: {
+      fan: [
+        { speed: 2, channel: 2 },
+      ],
+    },
+  })
+  assert.equal(fan.cacheFanState, true)
+  assert.equal(fan.fanService.getCharacteristic('On').value, true)
+  await setSpeed(200 / maximum)
+  assert.equal(platform.sendUpdate.mock.calls.length, 1)
+})
+
+it.each([3, 4])('restores the remembered percentage on power-on for maxSpeed=%i', async (maximum) => {
+  const { fan, report, platform, rotation } = fixture()
+  report({ maxSpeed: maximum, speed: 2, onoff: 0 })
+  // Some off reports contain zero rather than the remembered physical speed.
+  report({ speed: 0, onoff: 0 })
+  assert.equal(fan.cacheFanSpeed, 2)
+  rotation.value = 0
+  await fan.internalFanStateUpdate(true)
+  assert.deepEqual(platform.sendUpdate.mock.calls[0][1], {
+    namespace: 'Appliance.Control.ToggleX',
+    payload: {
+      togglex: { onoff: 1, channel: 2 },
+    },
+  })
+  assert.equal(platform.sendUpdate.mock.calls.length, 1)
+  assert.equal(rotation.value, 200 / maximum)
+  assert.equal(fan.cacheFanState, true)
+})
+
+it('does not send a zero-speed command even when the cached speed is zero', async () => {
+  const { fan, report, setSpeed, platform } = fixture()
+  report({ maxSpeed: 3, speed: 0, onoff: 1 })
+  await setSpeed(0)
+  assert.deepEqual(platform.sendUpdate.mock.calls[0][1], {
+    namespace: 'Appliance.Control.ToggleX',
+    payload: {
+      togglex: { onoff: 0, channel: 2 },
+    },
+  })
+  assert.equal(fan.cacheFanState, false)
+})
+
+it('avoids redundant off commands while restoring the slider percentage', async () => {
+  const { fan, report, setSpeed, platform, rotation } = fixture()
+  report({ maxSpeed: 3, speed: 2, onoff: 0 })
+  await setSpeed(0)
+  rotation.value = 0
+  await vi.advanceTimersByTimeAsync(2000)
+  assert.equal(platform.sendUpdate.mock.calls.length, 0)
+  assert.equal(rotation.value, 200 / 3)
+  assert.equal(fan.cacheFanSpeed, 2)
+})
+
+it.each([0, 100])('preserves caches and HomeKit after a failed slider request of %i%%', async (value) => {
+  const { fan, report, setSpeed, platform, rotation } = fixture()
+  const onoff = value === 0
+    ? 1
+    : 0
+  report({ maxSpeed: 3, speed: 2, onoff })
+  platform.sendUpdate.mockRejectedValueOnce(new Error('simulated failure'))
+  await assert.rejects(setSpeed(value))
+  assert.equal(fan.cacheFanSpeed, 2)
+  assert.equal(fan.cacheFanState, onoff === 1)
+  assert.equal(fan.fanService.getCharacteristic('On').value, onoff === 1)
+  await vi.advanceTimersByTimeAsync(2000)
+  assert.equal(rotation.value, 200 / 3)
+})
+
+it('keeps the current speed when an earlier off timer runs after a new request', async () => {
+  const { fan, report, setSpeed, platform, rotation } = fixture()
+  report({ maxSpeed: 3, speed: 2, onoff: 1 })
+  await setSpeed(0)
+  rotation.value = 0
+  await setSpeed(100)
+  rotation.value = 100
+  await vi.advanceTimersByTimeAsync(2000)
+  assert.equal(fan.cacheFanState, true)
+  assert.equal(fan.cacheFanSpeed, 3)
+  assert.equal(rotation.value, 100)
+  assert.equal(platform.sendUpdate.mock.calls.length, 2)
+})
+
+it('does not restore a speed on a failed power-on request', async () => {
+  const { fan, report, platform, rotation } = fixture()
+  report({ maxSpeed: 3, speed: 2, onoff: 0 })
+  rotation.value = 0
+  platform.sendUpdate.mockRejectedValueOnce(new Error('simulated failure'))
+  await assert.rejects(fan.internalFanStateUpdate(true))
+  await vi.advanceTimersByTimeAsync(2000)
+  assert.equal(fan.cacheFanState, false)
+  assert.equal(fan.cacheFanSpeed, 2)
+  assert.equal(rotation.value, 0)
 })
