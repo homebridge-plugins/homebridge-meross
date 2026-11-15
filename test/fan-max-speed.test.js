@@ -150,7 +150,7 @@ it.each([
   [4, 100, 4],
 ])('sends the physical level for maxSpeed=%i and HomeKit=%i%%', async (maximum, value, expected) => {
   const { report, setSpeed, platform, accessory } = fixture()
-  report({ maxSpeed: maximum, speed: 0 })
+  report({ maxSpeed: maximum, speed: 0, onoff: 1 })
   await setSpeed(value)
   assert.deepEqual(platform.sendUpdate.mock.calls, [
     [
@@ -239,7 +239,7 @@ it('does not send a redundant command at the current speed', async () => {
 
 it('reconciles a client percentage when the reported physical level has not changed', async () => {
   const { report, setSpeed, platform, rotation } = fixture()
-  report({ maxSpeed: 3, speed: 1 })
+  report({ maxSpeed: 3, speed: 1, onoff: 1 })
   await setSpeed(50)
   // HAP stores the original client value after the set handler resolves.
   rotation.value = 50
@@ -283,8 +283,8 @@ it.each([3, 4])('sends an equal cached speed while off for maxSpeed=%i', async (
   const { fan, report, setSpeed, platform } = fixture()
   report({ maxSpeed: maximum, speed: 2, onoff: 0 })
   await setSpeed(200 / maximum)
-  assert.equal(platform.sendUpdate.mock.calls.length, 1)
-  assert.deepEqual(platform.sendUpdate.mock.calls[0][1], {
+  assert.equal(platform.sendUpdate.mock.calls.length, 2)
+  assert.deepEqual(platform.sendUpdate.mock.calls[1][1], {
     namespace: 'Appliance.Control.Fan',
     payload: {
       fan: [
@@ -295,7 +295,34 @@ it.each([3, 4])('sends an equal cached speed while off for maxSpeed=%i', async (
   assert.equal(fan.cacheFanState, true)
   assert.equal(fan.fanService.getCharacteristic('On').value, true)
   await setSpeed(200 / maximum)
-  assert.equal(platform.sendUpdate.mock.calls.length, 1)
+  assert.equal(platform.sendUpdate.mock.calls.length, 2)
+})
+
+it('powers the fan on before setting a speed while it is off', async () => {
+  const { fan, report, setSpeed, platform } = fixture()
+  report({ maxSpeed: 3, speed: 1, onoff: 0 })
+  await setSpeed(100)
+  assert.deepEqual(platform.sendUpdate.mock.calls.map(call => call[1].namespace), [
+    'Appliance.Control.ToggleX',
+    'Appliance.Control.Fan',
+  ])
+  assert.deepEqual(platform.sendUpdate.mock.calls[0][1].payload, {
+    togglex: { onoff: 1, channel: 2 },
+  })
+  assert.equal(fan.cacheFanState, true)
+
+  // HomeKit's On=true arriving after the speed sends nothing more
+  await fan.internalFanStateUpdate(true)
+  assert.equal(platform.sendUpdate.mock.calls.length, 2)
+})
+
+it('sends only the speed while the fan is already on', async () => {
+  const { report, setSpeed, platform } = fixture()
+  report({ maxSpeed: 3, speed: 1, onoff: 1 })
+  await setSpeed(100)
+  assert.deepEqual(platform.sendUpdate.mock.calls.map(call => call[1].namespace), [
+    'Appliance.Control.Fan',
+  ])
 })
 
 it.each([3, 4])('restores the remembered percentage on power-on for maxSpeed=%i', async (maximum) => {
@@ -367,7 +394,12 @@ it('keeps the current speed when an earlier off timer runs after a new request',
   assert.equal(fan.cacheFanState, true)
   assert.equal(fan.cacheFanSpeed, 3)
   assert.equal(rotation.value, 100)
-  assert.equal(platform.sendUpdate.mock.calls.length, 2)
+  // Off from the slider, then on again before the speed
+  assert.deepEqual(platform.sendUpdate.mock.calls.map(call => call[1].namespace), [
+    'Appliance.Control.ToggleX',
+    'Appliance.Control.ToggleX',
+    'Appliance.Control.Fan',
+  ])
 })
 
 it('does not restore a speed on a failed power-on request', async () => {

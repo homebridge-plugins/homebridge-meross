@@ -7,6 +7,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 ### Changed
 
 - fix(fan): preserve safe MFC100 power and speed transitions (#830) (@aquilesr23)
+- fix(fan): power the mfc100 on before setting a speed while it is off
 
 ## v10.21.0 (2026-11-14)
 
