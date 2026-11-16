@@ -4,7 +4,7 @@ import { afterEach, beforeEach, it, vi } from 'vitest'
 
 import MerossFan from '../lib/device/fan.js'
 
-function fixture(cachedSpeed = 0) {
+function fixture(cachedSpeed = 0, cachedProps = { minValue: 0, maxValue: 100 }) {
   const services = new Map()
   const accessory = {
     displayName: 'Test Fan',
@@ -22,7 +22,7 @@ function fixture(cachedSpeed = 0) {
               value: key === 'RotationSpeed'
                 ? cachedSpeed
                 : false,
-              props: { minValue: 0, maxValue: 100, unit: 'percentage' },
+              props: { ...cachedProps, unit: 'percentage' },
               setProps(props) {
                 Object.assign(this.props, props)
                 return this
@@ -108,6 +108,14 @@ it('preserves the four-speed percentage fallback without sending commands', () =
     validValues: null,
   })
   assert.equal(platform.sendUpdate.mock.calls.length, 0)
+})
+
+it.each([3, 4])('resets a cached 0-%i speed range to 0-100 percent', (maximum) => {
+  const { rotation, report } = fixture(0, { minValue: 0, maxValue: maximum })
+  assert.equal(rotation.props.minValue, 0)
+  assert.equal(rotation.props.maxValue, 100)
+  report({ maxSpeed: 3, speed: 1 })
+  assert.equal(rotation.props.maxValue, 100)
 })
 
 it.each([

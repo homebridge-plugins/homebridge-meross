@@ -87,7 +87,7 @@ deviceFan
   polls every: 5s
   service: Fan [fan]
     On
-    RotationSpeed  [minStep=25, validValues=null]
+    RotationSpeed  [minValue=0, maxValue=100, minStep=25, validValues=null]
   service: Lightbulb [light]
     Brightness
     On
