@@ -10,6 +10,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(fan): power the mfc100 on before setting a speed while it is off
 - fix(fan): reset a cached speed range so the mfc100 speed slider reaches 100%
 - fix(fan): remember the mfc100's top speed, so its speed steps are right from the start
+- fix(fan): read a small mfc100 speed from home as speed 1, not as turning the fan off
 
 ## v10.21.0 (2026-11-14)
 

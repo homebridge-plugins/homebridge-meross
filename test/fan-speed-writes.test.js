@@ -111,3 +111,37 @@ it('sets the remembered three-speed steps before the first report', () => {
   assert.equal(rotation.value, 200 / 3)
   assert.equal(fan.cacheFanSpeed, 2)
 })
+
+it('treats a small non-zero percentage as speed 1, not off, while on', async () => {
+  const { fan, report, setSpeed, platform } = fixture()
+  report({ maxSpeed: 3, speed: 2, onoff: 1 })
+  await setSpeed(2)
+  assert.deepEqual(platform.sendUpdate.mock.calls.map(call => call[1]), [
+    {
+      namespace: 'Appliance.Control.Fan',
+      payload: {
+        fan: [
+          { speed: 1, channel: 2 },
+        ],
+      },
+    },
+  ])
+  assert.equal(fan.cacheFanState, true)
+})
+
+it('powers on at speed 1 for a small percentage while off', async () => {
+  const { fan, report, setSpeed, platform } = fixture()
+  report({ maxSpeed: 3, speed: 3, onoff: 0 })
+  await setSpeed(3)
+  assert.deepEqual(platform.sendUpdate.mock.calls.map(call => call[1].payload), [
+    {
+      togglex: { onoff: 1, channel: 2 },
+    },
+    {
+      fan: [
+        { speed: 1, channel: 2 },
+      ],
+    },
+  ])
+  assert.equal(fan.cacheFanState, true)
+})
