@@ -83,6 +83,7 @@ function makeFixture(option, cachedLight = false) {
     },
     log: vi.fn(),
     logWarn: vi.fn(),
+    logDebug: vi.fn(),
   }
 
   const platform = {

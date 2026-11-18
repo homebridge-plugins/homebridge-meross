@@ -145,3 +145,13 @@ it('powers on at speed 1 for a small percentage while off', async () => {
   ])
   assert.equal(fan.cacheFanState, true)
 })
+
+it('logs each HomeKit write and its conversion at debug level', async () => {
+  const { accessory, report, setSpeed } = fixture()
+  report({ maxSpeed: 3, speed: 1, onoff: 1 })
+  await setSpeed(200 / 3)
+  const lines = accessory.logDebug.mock.calls.map(call => call[0])
+  assert.ok(lines.some(line => line.includes('HomeKit set RotationSpeed [66.66666666666667] (number)')))
+  assert.ok(lines.some(line => line.includes('is speed [2] of [3]')))
+  assert.ok(lines.some(line => line.includes('sending Fan speed [2]')))
+})
