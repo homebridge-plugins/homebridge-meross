@@ -13,7 +13,10 @@ function fixture(cachedSpeed = 0, cachedProps = { minValue: 0, maxValue: 100 }) 
       options: { hideLight: true },
     },
     getService: name => services.get(name),
-    addService(type, name) {
+    getServiceById: (type, subtype) => [
+      ...services.values(),
+    ].find(service => service.subtype === subtype),
+    addService(type, name, subtype) {
       const characteristics = new Map()
       const service = {
         getCharacteristic(key) {
@@ -40,6 +43,7 @@ function fixture(cachedSpeed = 0, cachedProps = { minValue: 0, maxValue: 100 }) 
           return service
         }),
       }
+      service.subtype = subtype
       services.set(name, service)
       return service
     },

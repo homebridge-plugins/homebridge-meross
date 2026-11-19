@@ -40,10 +40,11 @@ function makeService() {
 }
 
 function makeFixture(option, cachedLight = false) {
+  // the fan a current version leaves in the cache
   const services = new Map([
     [
       'Fan',
-      makeService(),
+      Object.assign(makeService(), { subtype: 'fan-speed' }),
     ],
   ])
 
@@ -65,8 +66,13 @@ function makeFixture(option, cachedLight = false) {
     getService(name) {
       return services.get(name) || null
     },
-    addService(type, name) {
-      const service = makeService()
+    getServiceById(type, subtype) {
+      return [
+        ...services.values(),
+      ].find(service => service.subtype === subtype) || null
+    },
+    addService(type, name, subtype) {
+      const service = Object.assign(makeService(), { subtype })
       services.set(name || type, service)
       operations.push(`add:${name || type}`)
       return service
@@ -179,4 +185,26 @@ it('does not send physical Meross commands on initialization', () => {
 
   assert.equal(fixture.sendUpdate.mock.calls.length, 0)
   assert.deepEqual(fixture.operations, ['remove:Light'])
+})
+
+// Home kept a fan's old 0-3 speed range on the old service, so every speed
+// picked in Home arrived as 0 (#830). A cached fan moves to a new service.
+it('replaces a cached fan service of the old subtype with a new one', () => {
+  const fixture = makeFixture(true)
+  const cachedFan = fixture.services.get('Fan')
+  cachedFan.subtype = 'fan'
+  const fan = fixture.initialize()
+
+  assert.deepEqual(fixture.operations.slice(0, 2), ['remove:Fan', 'add:Fan'])
+  assert.notEqual(fan.fanService, cachedFan)
+  assert.equal(fan.fanService.subtype, 'fan-speed')
+})
+
+it('keeps a cached fan service of the new subtype', () => {
+  const fixture = makeFixture(true)
+  const cachedFan = fixture.services.get('Fan')
+  const fan = fixture.initialize()
+
+  assert.equal(fixture.operations.includes('remove:Fan'), false)
+  assert.equal(fan.fanService, cachedFan)
 })
