@@ -13,6 +13,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(fan): read a small mfc100 speed from home as speed 1, not as turning the fan off
 - fix(fan): log each mfc100 power and speed change from home at debug level
 - fix(fan): move the mfc100 to a new fan service, so home reads its speed range again (#830)
+- chore(deps): dependency updates
 
 ## v10.21.0 (2026-11-14)
 
