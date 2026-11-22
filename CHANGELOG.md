@@ -14,6 +14,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(fan): log each mfc100 power and speed change from home at debug level
 - fix(fan): move the mfc100 to a new fan service, so home reads its speed range again (#830)
 - fix(light): send the new colour, not the old one, when home sets hue and saturation together (#831)
+- chore(deps): dependency updates
 
 ## v10.21.0 (2026-11-14)
 
