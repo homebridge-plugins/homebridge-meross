@@ -39,7 +39,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - fix(hub): show a hub sensor's battery level as the hub reports it
 - feat: add support for the ms405 water leak sensor
 - fix(hub): show an ms100 sensor's new reading when the hub sends it, not at the next poll
-- fix(thermostat): use onoff for the MTS215 target state and state for the current one (@marcaicart)
+- fix(thermostat): use onoff for the MTS215 target state and state for the current one (#824) (@marcaicart)
 - chore: leave CLAUDE.md out of the published package
 - feat(fan): add an option to hide a fan's light from homekit (#827) (@aquilesr23)
 - feat(logging): name a device in the log by its configured name (#829) (@aquilesr23)
@@ -108,7 +108,7 @@ All notable changes to `@homebridge-plugins/homebridge-meross` will be documente
 - chore: add a changelog:sync script to populate the pending section from the commits
 - chore: count a repeated commit subject once when syncing the changelog
 - chore(github): check the changelog against the commits in ci
-- feat(thermostat): honour SummerMode on MTS215/MTS215B (@marcaicart)
+- feat(thermostat): honour SummerMode on MTS215/MTS215B (#799) (@marcaicart)
 - chore(deps): dependency updates
 
 ## v10.17.1 (2026-07-28)
